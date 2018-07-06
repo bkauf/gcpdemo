@@ -94,8 +94,9 @@ app.post('/sendChat',function(req,res){
                 var messageAgent = botResp.result.fulfillment.speech;
 
                 // Send messages to chatbase
-                chatbase(chatToken,"user",botResp.sessionId,messageUser,messageAgent,action,intent);// send request to chatbase
-
+                if(chatToken !=""){//log to chatbase
+                  chatbase(chatToken,"user",botResp.sessionId,messageUser,messageAgent,action,intent);// send request to chatbase
+                }
                 res.send(body);
 
           });

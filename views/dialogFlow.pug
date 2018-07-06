@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    link(href='/stylesheets/style.css', rel='stylesheet')
+    link(href='/stylesheets/jquery-ui.css', rel='stylesheet')
+    script(src='/javascripts/jquery-1.12.4.js')
+    script(src='/javascripts/jquery-ui-1.12.1/jquery-ui.js')
+    script(src='/javascripts/script.js')
+    title From #{container}
+
+  body(id="exp")
+    #wrapper
+      #header
+        #header-right
+          a(href='/')
+            img(src="/images/cloud-logo.svg")
+        #header-left
+          h1  DialogFlow Example API
+
+      #status
+      #main
+            br
+            br
+            span
+            span.label DialogFlow API:
+            input#dialogToken.inputBox(type='text', name='dialogToken', value=dialogToken)
+            br
+            span
+            span.label ChatBase API:
+            input#chatToken.inputBox(type='text', name='chatToken', value=chatToken)
+            br
+            span
+            span.label UserSession:
+            input#userSession.inputBox(type='text', name='userSession', value='1111')
+            #action
+            #menu
+              input(type='submit', value='Chat!', id='chat-button')
+              textarea#userMessage(name='userMessage') Hello Bot!
+            

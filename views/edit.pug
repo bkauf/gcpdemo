@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    link(href='/stylesheets/style.css', rel='stylesheet')
+    link(href='http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css', rel='stylesheet')
+    script(src='http://code.jquery.com/jquery-1.12.4.js')
+    script(src='/javascripts/jquery-ui-1.12.1/jquery-ui.js')
+    script(src='/javascripts/ace/src/ace.js')
+    script(src='/javascripts/ace/src/mode-javascript.js')
+    script(src='/javascripts/ace/src/mode-javascript.js')
+    title Expression: #{espName}
+
+  body(id="exp")
+    #wrapper
+      #header
+        #header-left
+          h1= title
+          //h2 From Container #{container}
+        #header-right
+          a(href='/')
+            img(src="/images/whale_up.png", width="150px")
+      #main
+        form(name="esp-create", method="POST", action="/save")
+
+          span.espName  #{espName}
+          span.delete
+            a(href='/delr?name=#{espType}/#{espName}.js') Delete
+          input#espName(type="hidden" name="espName" value="#{espName}")
+          br
+
+          span.espType #{espType} Event
+          input#espName(type="hidden" name="espType" value="#{espType}")
+
+          br
+          input(type='submit', value='save', id='save-button')
+
+
+
+          #aceCode #{espCode}
+          textarea#espCode(name='espCode')
+
+
+
+          script.
+            var textarea = $('#espCode');
+            var editor = ace.edit("aceCode");
+            editor.setTheme("ace/theme/twilight");
+            editor.getSession().setMode("ace/mode/javascript");
+            //var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
+            //editor.session.setMode(new JavaScriptMode());
+            editor.getSession().on('change', function () {
+              textarea.val(editor.getSession().getValue());
+            //  alert(textarea.val());
+
+              });
+              textarea.val(editor.getSession().getValue());

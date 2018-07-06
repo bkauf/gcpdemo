@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    link(href='/stylesheets/style.css', rel='stylesheet')
+    link(href='/stylesheets/jquery-ui.css', rel='stylesheet')
+    script(src='/javascripts/jquery-1.12.4.js')
+    script(src='/javascripts/jquery-ui-1.12.1/jquery-ui.js')
+    script(src='/javascripts/script.js')
+    title From #{container}
+
+  body(id="exp")
+    #wrapper
+      #header
+        #header-right
+          a(href='/')
+            img(src="/images/cloud-logo.svg")
+        #header-left
+          h1  PubSub Generator
+
+      #status
+      #main
+            br
+            br
+            span
+            span.label PUBSUB_TOPIC:
+            input#topicName.inputBox(type='text', name='topicName', value=topic)
+            br
+            span.label PUBSUB_TOKEN:
+            input#topicToken.inputBox(type='text', name='topicToken', value=token)
+            br
+            input(type='submit', value='Send!', id='send-button')
+            textarea#pubsubMessage(name='pubsubMessage') Sample PubSub Message!

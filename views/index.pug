@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    link(href='/stylesheets/style.css', rel='stylesheet')
+    script(src='/javascripts/jquery-3.2.1.min.js')
+    script(src='/javascripts/script.js')
+    title From: Test #{container}
+  body
+    #wrapper
+      #header
+        #header-right
+          img(src="/images/cloud-logo.svg")
+        #header-left
+          h1=title
+          h2 Container Hostname: #{container}
+
+      #spacer Action Menu
+      #main
+        #action
+          #ul.action
+            li#status
+        #menu
+          ul.menu
+            li
+              a(href="#health").health Get Health
+            li
+              a(href="#kill").kill Kill Container
+            li
+              a(href="pubsub") PubSub
+            li
+              a(href="dialogflow") DialogFlow

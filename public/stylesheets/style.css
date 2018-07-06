@@ -1,0 +1,80 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-image: url("../images/whale-long.svg");
+  background-repeat: no-repeat;
+  background-position: center 270px; */
+}
+
+a {
+  color: #00B7FF;
+}
+h2 {
+border:2px dotted #33E1FF;
+padding: 10px;
+
+}
+
+
+#wrapper{
+  margin-left: auto;
+  margin-right: auto;
+  width: 675px;
+}
+#header{width:100%}
+#header-left{
+  width: 350px;
+  margin: 0px;
+  padding: 0px;
+}
+#header-right{
+  float:right;
+  width: 300px;
+  text-align: right;
+}
+#status{
+  color: #000;
+  width: 100%;
+}
+#spacer{width: 100%;}
+#main{width: 100%;}
+
+#menu{
+  width:33%;
+  margin-left: 0;
+}
+#action{
+  width:33%;
+  float:right;
+}
+#pubsubMessage{
+  width:750px;
+  height: 200px;
+  position: relative;
+  background-color:black;
+  color: #fff;
+  padding: 10px;
+}
+#agentMessage, #userMessage{
+  width:300px;
+  height: 50px;
+  position: relative;
+  color: #fff;
+  padding: 10px;
+}
+
+#userMessage{
+  background-color:black;
+}
+
+input#send-button,#chat-button,.inputBox {
+    color:#08233e;
+    margin: 10px;
+    border: 1px solid blue;
+    font-size:20px;
+    margin-left: 0px;
+
+}
+.blue{
+  color: blue;
+}

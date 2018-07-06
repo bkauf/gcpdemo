@@ -16,10 +16,10 @@
     "npm": "^6.1.0",
     "pug": "^2.0.3",
     "serve-favicon": "~2.4.2"
-  },
-  ,
+    },
+
   "author": "Brian Kaufman",
   "bugs": {
     "url": "https://github.com/bkauf/gcpdemo/issues"
-  },
+  }
 }

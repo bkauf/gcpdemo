@@ -89,11 +89,12 @@ app.post('/sendChat',function(req,res){
                 console.log("Response: "+body)
                 var botResp = JSON.parse(body);
                 var intent  = botResp.result.metadata.intentName || "";
+                var action  = botResp.result.action || "";
                 var messageUser  = botResp.result.resolvedQuery;
                 var messageAgent = botResp.result.fulfillment.speech;
 
                 // Send messages to chatbase
-                chatbase(chatToken,"user",botResp.sessionId,messageUser,messageAgent,botResp.result.action,intent);// send request to chatbase
+                chatbase(chatToken,"user",botResp.sessionId,messageUser,messageAgent,action,intent);// send request to chatbase
 
                 res.send(body);
 
@@ -121,7 +122,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, fulfillment,intent){//send messages to chatbase
+function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, action,intent){//send messages to chatbase
 
     var serverURL = "https://chatbase-area120.appspot.com/api/message";
     var data = {};
@@ -129,10 +130,11 @@ function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, fulf
     data.type     = direction;
     data.message  = messageUser;
     data.platform = "demo-bot";
-    if(direction == "user" && intent !=""){
+
+    if(intent !=""){
       data.intent = intent;
     }
-    if(intent == "input.unknown" || intent == "Default Fallback Intent" || intent ==""){
+    if(action == "input.unknown"){
       data.not_handled = "true"
     }
     data.version = "1.0";
@@ -150,6 +152,7 @@ function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, fulf
             chatbaseAgent();
 
         });
+        
     function chatbaseAgent(){//log agent message to chatbase
       data.type     = "agent";
       data.message  = messageAgent;

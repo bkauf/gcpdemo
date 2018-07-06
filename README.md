@@ -13,3 +13,8 @@ This app can be run as a container or google app engine project. Current capabil
 
 You can create a container out of these file with the supplied Dockerfile or run the code in an app engine instance on GCP.
 Optional Edit the env.sh file to include the necessary api keys.
+
+```
+docker build -t bkauf/gcpdemo:1.1 .
+docker run -p 8080:8080 bkauf/gcpdemo:1.1
+```

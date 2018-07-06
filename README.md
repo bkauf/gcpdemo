@@ -2,6 +2,8 @@
 # Node.js app that allows you to test various GCP products/features
 
 ![gcpdemo](/gcpdemo-ss.png?raw=true "GCP Demo")
+![gcpdemo](/dialogflow-ss.png?raw=true "GCP Dialogflow")
+
 
 This app can be run as a container or google app engine project. Current capabilities include:
 

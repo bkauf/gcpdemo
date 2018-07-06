@@ -3,8 +3,8 @@
 
 ![gcpdemo](/gcpdemo-ss.png?raw=true "GCP Demo")
 
-## Dialogflow bot screen 
-![gcpdemo](/dialogflow-ss.png?raw=true "GCP Dialogflow")
+## Dialogflow bot screen
+![gcpdemo](/dialogflow1-ss.png?raw=true "GCP Dialogflow")
 
 
 This app can be run as a container or google app engine project. Current capabilities include:

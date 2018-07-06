@@ -131,11 +131,10 @@ function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, acti
     data.message  = messageUser;
     data.platform = "demo-bot";
 
-    if(intent !=""){
-      data.intent = intent;
-    }
     if(action == "input.unknown"){
       data.not_handled = "true"
+    }else{
+        data.intent = intent;
     }
     data.version = "1.0";
     data.user_id = sessionID;
@@ -152,22 +151,26 @@ function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, acti
             chatbaseAgent();
 
         });
-        
+
     function chatbaseAgent(){//log agent message to chatbase
-      data.type     = "agent";
-      data.message  = messageAgent;
-      data.intent = "";
-      data.not_handled = ""
+      var agentData = {};
+      agentData.type     = "agent";
+      agentData.message  = messageAgent;
+      agentData.api_key  = chatToken;
+      agentData.platform = "demo-bot";
+      agentData.version = "1.0";
+      agentData.user_id = sessionID;
+
       request({//dialog flow request
           url: serverURL,
           method: "POST",
           headers: {
               "content-type": "application/json",
               },
-          body: JSON.stringify(data)
+          body: JSON.stringify(agentData)
           }, function (error, resp, body) {
               console.log("Chatbase-agent: "+body)
-              console.log("agent message:"+ messageAgent+" "+data.user_id );
+              console.log("agent message:"+ messageAgent+" "+agentData.user_id );
 
           });
     }

@@ -1,6 +1,16 @@
 
-# Node.js container app that is a UI to write and save your expressions
+# Node.js app that allows you to test various GCP products/features s
 
-This container shares the expressions volume with the expressions engine. This container allows you to read/write new expressions to this shared volume. 
+![gcpdemo](/gcpdemo-ss.png?raw=true "GCP Demo")
 
-![Expression-Web](/Expressions-Web2.png?raw=true "Expression-Web UI")
+This app can be run as a container or google app engine project. Current capabilities includee:
+
+*Ability to toggle the /health page from a 200 to a 500 Error for health check testing
+*Dialogflow and Chatbase bot tester
+*Pubsub message submissions
+
+## To Use:
+
+You can create a container out of these file with the supplied dockerfile or run the code in an app engine instance on GCP.
+Optional Edit the env.sh file to include the nessessary api keys. 
+

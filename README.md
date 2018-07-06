@@ -16,5 +16,5 @@ Optional Edit the env.sh file to include the necessary api keys.
 
 ```
 docker build -t bkauf/gcpdemo:1.1 .
-docker run -p 8080:8080 bkauf/gcpdemo:1.1
+docker run -itd -p 8080:8080 bkauf/gcpdemo:1.1
 ```

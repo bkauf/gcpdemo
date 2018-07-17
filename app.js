@@ -9,12 +9,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 const PubSub     = require('@google-cloud/pubsub');
 const pubsub     = new PubSub();
+//const spanner    = require('@google-cloud/spanner');
+var spnrFns      = require('./spanner/dbfn.js');
 /* pages */
 var index      = require('./routes/index');
 var health     = require('./routes/health');
 var kill       = require('./routes/kill');
 var dialogflow = require('./routes/dialogflow');
 var pubsubPage = require('./routes/pubsub');
+var spannerPage    = require('./routes/spannerPage');
+var status     = ""; // used for spanner callback status
 
 
 // test
@@ -36,6 +40,7 @@ app.use('/health', health);
 app.use('/kill', kill);
 app.use('/pubsub', pubsubPage);
 app.use('/dialogflow', dialogflow);
+app.use('/spannerPage', spannerPage);
 
 
 
@@ -59,6 +64,40 @@ app.post('/sendpubsub',function(req,res){
     });
 
 });
+
+app.post('/dbcreate',function(req,res){//create a new spanner DB
+  var projectId  = req.body.projectId|| "";
+  var instanceId = req.body.instanceId || "";
+  var databaseId = req.body.databaseId || "";
+  var response   = spnrFns.dbcreate(projectId,instanceId,databaseId,createPage);
+//  res.send(response);
+
+});
+
+app.post('/dbinsert',function(req,res){//insert records in a spanner DB
+
+  var projectId = req.body.projectId|| "";
+  var instanceId = req.body.instanceId || "";
+  var databaseId = req.body.databaseId || "";
+  var table = req.body.table || "";
+  var response   =  spnrFns.dbinsert(projectId,instanceId,databaseId,createPage);
+//  res.send(response);
+});
+
+app.post('/dbquery',function(req,res){//query spanner DB
+  var start_time = new Date().getTime();
+  var projectId = req.body.projectId|| "";
+  var instanceId = req.body.instanceId || "";
+  var databaseId = req.body.databaseId || "";
+  var table = req.body.table || "";
+  var response   =  spnrFns.dbquery(projectId,instanceId,databaseId,createPage);
+  var request_time = new Date().getTime() - start_time;
+//  res.send("Request Time: "+ request_time +" Query:"+response);
+    function createPage(){
+       res.send(status);
+    }
+});
+
 
 // DialogFlow Request
 app.post('/sendChat',function(req,res){
@@ -98,7 +137,6 @@ app.post('/sendChat',function(req,res){
                   chatbase(chatToken,"user",botResp.sessionId,messageUser,messageAgent,action,intent);// send request to chatbase
                 }
                 res.send(body);
-
           });
 
 });

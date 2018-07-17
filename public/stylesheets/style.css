@@ -62,12 +62,16 @@ padding: 10px;
   color: #fff;
   padding: 10px;
 }
+#dbconsole{
+  width: 400px;
+  height: 200px;
+}
 
-#userMessage{
+#userMessage, #dbconsole{
   background-color:black;
 }
 
-input#send-button,#chat-button,.inputBox {
+input#send-button,#chat-button,#query-button,.button, .inputBox {
     color:#08233e;
     margin: 10px;
     border: 1px solid blue;

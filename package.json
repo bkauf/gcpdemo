@@ -1,5 +1,5 @@
 {
-  "name": "GCPdemo",
+  "name": "gcpdemo",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@google-cloud/pubsub": "^0.18.0",
+    "@google-cloud/spanner": "^1.5.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
@@ -16,10 +17,18 @@
     "npm": "^6.1.0",
     "pug": "^2.0.3",
     "serve-favicon": "~2.4.2"
-    },
-
+  },
   "author": "Brian Kaufman",
   "bugs": {
     "url": "https://github.com/bkauf/gcpdemo/issues"
-  }
+  },
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkauf/gcpdemo.git"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/bkauf/gcpdemo#readme"
 }

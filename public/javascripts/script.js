@@ -12,6 +12,41 @@ $(document).ready( function() {
         });
   });
 
+  $("#dbcreate").click(function(e){//for Spanner
+        var projectId  = $('#projectId').val();
+        var instanceId = $('#instanceId').val();
+        var databaseId = $('#databaseId').val();
+        $.post('/dbcreate',{ 'projectId':projectId,
+         'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
+              {// success callback
+                      $('#status').text(data);
+              });
+  });
+
+  $("#dbinsert").click(function(e){//for Spanner
+        var projectId  = $('#projectId').val();
+        var instanceId = $('#instanceId').val();
+        var databaseId = $('#databaseId').val();
+        $.post('/dbinsert',{ 'projectId':projectId,
+           'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
+                {// success callback
+                        $('#status').text(data);
+                });
+  });
+  $("#dbquery").click(function(e){//for Spanner
+        var projectId  = $('#projectId').val();
+        var instanceId = $('#instanceId').val();
+        var databaseId = $('#databaseId').val();
+        $.post('/dbquery',{ 'projectId':projectId,
+         'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
+              {// success callback
+                      $('#status').text('Status: '+status+', data: '+data);
+                      $('#dbconsole').text(data);
+
+              });
+  });
+
+
   $("#send-button").click(function(e){//for pubsub
   var pubsubMessage = $('#pubsubMessage').val();
   var topicName     = $('#topicName').val();

@@ -1,5 +1,6 @@
 module.exports = {
   dbcreate: function (projectId,instanceId,databaseId,callback){
+    var start_time = new Date().getTime();
     var status = "";
     const Spanner = require('@google-cloud/spanner');
     const spanner = new Spanner({
@@ -35,15 +36,20 @@ module.exports = {
       .then(() => {
         console.log(`Created database ${databaseId} on instance ${instanceId}.`);
         status = `Created database ${databaseId} on instance ${instanceId}.`;
+
       })
       .catch(err => {
         console.error('ERROR:', err);
         status = err;
       });
+      var request_time = new Date().getTime() - start_time;
+      status +="-------Query Time:"+request_time;
       callback(status);
-      return
+      //return ;
+      return;
   },
   dbinsert: function (projectId,instanceId,databaseId,callback) {
+    var start_time = new Date().getTime();
     var status = "";
     // Imports the Google Cloud client library
     const Spanner = require('@google-cloud/spanner');
@@ -89,8 +95,10 @@ module.exports = {
       .then(() => {
         // Close the database when finished.
        database.close();
+       var request_time = new Date().getTime() - start_time;
+       status +="-------Query Time:"+request_time;
        callback(status);
-       return;
+       //return ;
       });
 
   },
@@ -128,7 +136,7 @@ module.exports = {
           // Close the database when finished.
           database.close();
           var request_time = new Date().getTime() - start_time;
-          status +="::Query Time:"+request_time;
+          status +="-------Query Time:"+request_time;
           callback(status);
           //return ;
         });

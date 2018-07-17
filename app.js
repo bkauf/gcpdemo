@@ -71,29 +71,31 @@ app.post('/dbcreate',function(req,res){//create a new spanner DB
   var databaseId = req.body.databaseId || "";
   var response   = spnrFns.dbcreate(projectId,instanceId,databaseId,createPage);
 //  res.send(response);
+  function createPage(status){
+     res.send(status);
+  }
 
 });
 
 app.post('/dbinsert',function(req,res){//insert records in a spanner DB
-
   var projectId = req.body.projectId|| "";
   var instanceId = req.body.instanceId || "";
   var databaseId = req.body.databaseId || "";
   var table = req.body.table || "";
   var response   =  spnrFns.dbinsert(projectId,instanceId,databaseId,createPage);
 //  res.send(response);
+  function createPage(status){
+     res.send(status);
+  }
 });
 
 app.post('/dbquery',function(req,res){//query spanner DB
-  var start_time = new Date().getTime();
   var projectId = req.body.projectId|| "";
   var instanceId = req.body.instanceId || "";
   var databaseId = req.body.databaseId || "";
   var table = req.body.table || "";
   var response   =  spnrFns.dbquery(projectId,instanceId,databaseId,createPage);
-  var request_time = new Date().getTime() - start_time;
-//  res.send("Request Time: "+ request_time +" Query:"+response);
-    function createPage(){
+    function createPage(status){
        res.send(status);
     }
 });

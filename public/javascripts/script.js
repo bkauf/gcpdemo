@@ -41,7 +41,7 @@ $(document).ready( function() {
          'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
               {// success callback
                       $('#status').text('Status: '+status+', data: '+data);
-                      $('#dbconsole').text(data);
+                      $('#dbconsole').textarea(data);
 
               });
   });

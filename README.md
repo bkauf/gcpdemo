@@ -7,6 +7,7 @@ This app can be run as a container or google app engine project. Current capabil
 * Ability to toggle the /health page from a 200 to a 500 Error for health check testing
 * Dialogflow and Chatbase bot tester
 * Pubsub message submissions
+* Google Cloud Spanner Database creation, data insert, and query
 
 ## To Use:
 

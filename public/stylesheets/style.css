@@ -63,8 +63,9 @@ padding: 10px;
   padding: 10px;
 }
 #dbconsole{
-  width: 400px;
-  height: 200px;
+  width: 600px;
+  height: 150px;
+  color: #fff;
 }
 
 #userMessage, #dbconsole{
@@ -78,6 +79,9 @@ input#send-button,#chat-button,#query-button,.button, .inputBox {
     font-size:20px;
     margin-left: 0px;
 
+}
+#querytime{
+  width: 40px;
 }
 .blue{
   color: blue;

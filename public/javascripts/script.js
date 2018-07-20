@@ -13,35 +13,41 @@ $(document).ready( function() {
   });
 
   $("#dbcreate").click(function(e){//for Spanner
-        var projectId  = $('#projectId').val();
-        var instanceId = $('#instanceId').val();
-        var databaseId = $('#databaseId').val();
+        var projectId  = $('#projectId').val() || "test";
+        var instanceId = $('#instanceId').val() || "test";
+        var databaseId = $('#databaseId').val() || "test";
         $.post('/dbcreate',{ 'projectId':projectId,
          'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
               {// success callback
-                      $('#status').text(data);
+                  var obj = JSON.parse(data);
+                  $('#dbconsole').text(obj.result);
+                  $('#querytime').text(obj.time);
               });
   });
 
   $("#dbinsert").click(function(e){//for Spanner
-        var projectId  = $('#projectId').val();
-        var instanceId = $('#instanceId').val();
-        var databaseId = $('#databaseId').val();
+        var projectId  = $('#projectId').val() || "test";
+        var instanceId = $('#instanceId').val() || "test";
+        var databaseId = $('#databaseId').val() || "test";
         $.post('/dbinsert',{ 'projectId':projectId,
            'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
                 {// success callback
-                        $('#status').text(data);
+                        var obj = JSON.parse(data);
+                        $('#dbconsole').text(obj.result);
+                        $('#querytime').text(obj.time);
                 });
   });
   $("#dbquery").click(function(e){//for Spanner
-        var projectId  = $('#projectId').val();
-        var instanceId = $('#instanceId').val();
-        var databaseId = $('#databaseId').val();
+        var projectId  = $('#projectId').val() || "test";
+        var instanceId = $('#instanceId').val() || "test";
+        var databaseId = $('#databaseId').val() || "test";
         $.post('/dbquery',{ 'projectId':projectId,
          'instanceId':instanceId, 'databaseId':databaseId },function(data, status, jqXHR)
               {// success callback
-                      $('#status').text('Status: '+status+', data: '+data);
-                      $('#dbconsole').textarea(data);
+                    //  $('#status').text('Status: '+status+', data: '+data);
+                    var obj = JSON.parse(data);
+                    $('#dbconsole').text(obj.result);
+                    $('#querytime').text(obj.time);
 
               });
   });

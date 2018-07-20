@@ -1,7 +1,7 @@
 module.exports = {
   dbcreate: function (projectId,instanceId,databaseId,callback){
     var start_time = new Date().getTime();
-    var status = "";
+    var status = '{"result":"';
     const Spanner = require('@google-cloud/spanner');
     const spanner = new Spanner({
       projectId: projectId,
@@ -35,22 +35,22 @@ module.exports = {
       })
       .then(() => {
         console.log(`Created database ${databaseId} on instance ${instanceId}.`);
-        status = `Created database ${databaseId} on instance ${instanceId}.`;
+        status += `Created database ${databaseId} on instance ${instanceId}.`;
 
       })
       .catch(err => {
         console.error('ERROR:', err);
-        status = err;
+        status += err;
       });
       var request_time = new Date().getTime() - start_time;
-      status +="-------Query Time:"+request_time;
+      status +='","time":"'+request_time+'"}';
       callback(status);
       //return ;
       return;
   },
   dbinsert: function (projectId,instanceId,databaseId,callback) {
     var start_time = new Date().getTime();
-    var status = "";
+    var status = '{"result":"';
     // Imports the Google Cloud client library
     const Spanner = require('@google-cloud/spanner');
     // Creates a client
@@ -86,17 +86,17 @@ module.exports = {
       })
       .then(() => {
         console.log('Inserted data.');
-        status = "Inserted Data";
+        status += "Inserted Data";
       })
       .catch(err => {
         console.error('ERROR:', err);
-        status = "ERROR:"+ err;
+        status += "ERROR:"+ err;
       })
       .then(() => {
         // Close the database when finished.
        database.close();
        var request_time = new Date().getTime() - start_time;
-       status +="-------Query Time:"+request_time;
+       status +='","time":"'+request_time+'"}';
        callback(status);
        //return ;
       });
@@ -105,6 +105,7 @@ module.exports = {
   dbquery: function (projectId,instanceId,databaseId,callback) {
     // Imports the Google Cloud client library
       var start_time = new Date().getTime();
+      var status = '{"result":"';
       const Spanner = require('@google-cloud/spanner');
       // Creates a client
       const spanner = new Spanner({
@@ -130,13 +131,13 @@ module.exports = {
         })
         .catch(err => {
           console.error('ERROR:', err);
-          status = "Error"+err;
+          status += "Error"+err;
         })
         .then(() => {
           // Close the database when finished.
           database.close();
           var request_time = new Date().getTime() - start_time;
-          status +="-------Query Time:"+request_time;
+          status +='","time":"'+request_time+'"}';
           callback(status);
           //return ;
         });

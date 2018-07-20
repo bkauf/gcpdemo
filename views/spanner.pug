@@ -21,20 +21,21 @@ html
       #main
             br
             br
-            span
             span.label projectId:
             input#projectId.inputBox(type='text', name='projectId', value=projectId)
             br
-            span
             span.label instanceId:
             input#instanceId.inputBox(type='text', name='instanceId', value=instanceId)
             br
-            span
             span.label databaseId:
             input#databaseId.inputBox(type='text', name='databaseId', value=databaseId)
-            #action
-            #menu
-              input.button(type='submit', value='CreateDB', id='dbcreate')
-              input.button(type='submit', value='Insert Data', id='dbinsert')
-              input.button(type='submit', value='DB Query', id='dbquery')
-              textarea(name='dbconsole', id='dbconsole')
+            br
+
+
+
+            input.button(type='submit', value='CreateDB', id='dbcreate')
+            input.button(type='submit', value='Insert Data', id='dbinsert')
+            input.button(type='submit', value='DB Query', id='dbquery')
+            span.label Time(ms):
+            span#querytime 0
+            textarea(name='dbconsole', id='dbconsole')

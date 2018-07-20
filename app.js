@@ -100,7 +100,6 @@ app.post('/dbquery',function(req,res){//query spanner DB
     }
 });
 
-
 // DialogFlow Request
 app.post('/sendChat',function(req,res){
      var chatToken     = req.body.chatToken;

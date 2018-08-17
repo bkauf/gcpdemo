@@ -1,0 +1,29 @@
+#V1.10 for initialDelay
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-web-app
+  labels:
+    app: node-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-web-app
+  template:
+    metadata:
+      labels:
+        app: node-web-app
+    spec:
+      containers:
+      - name: node-web-app
+        image: bkauf/gcpdemo:3.0
+      #  image: gcr.io/bkauf-sandbox/pubsub:2.0
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+        #initialDelaySeconds: 10
+        #periodSeconds: 5

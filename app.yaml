@@ -12,10 +12,10 @@
 # limitations under the License.
 #
 # [START runtime]
-runtime: nodejs
+runtime: nodejs8
 #runtime: custom
-env: flex
+#env: flex
 # [END runtime]
-network:
-  instance_tag: nodejs
-  name: default
+#network:
+#  instance_tag: nodejs
+#  name: default

@@ -2,23 +2,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-web-app
+  name: gcpdemo
   labels:
-    app: node-web-app
+    app: gcpdemo-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: node-web-app
+      app: gcpdemo-app
   template:
     metadata:
       labels:
-        app: node-web-app
+        app: gcpdemo-app
     spec:
       containers:
-      - name: node-web-app
+      - name: gcpdemo-app
         image: bkauf/gcpdemo:3.0
-      #  image: gcr.io/bkauf-sandbox/pubsub:2.0
+        resources:
+          limits:
+            cpu: "0.5"
+          requests:
+            cpu: "0.25"
         ports:
         - containerPort: 8080
         livenessProbe:

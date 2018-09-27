@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gcpdemo-app
+spec:
+  ports:
+    - port: 8080
+  type: LoadBalancer
+  selector:
+    app: gcpdemo-app

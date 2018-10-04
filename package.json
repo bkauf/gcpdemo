@@ -7,8 +7,10 @@
     "build": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@google-cloud/dlp": "^0.9.0",
     "@google-cloud/pubsub": "^0.18.0",
     "@google-cloud/spanner": "^1.5.0",
+    "@google-cloud/text-to-speech": "^0.3.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",

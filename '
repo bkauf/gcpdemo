@@ -1,0 +1,37 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/backends: '{"k8s-be-31073--f1dccaa5809866bc":"HEALTHY","k8s-be-31204--f1dccaa5809866bc":"HEALTHY"}'
+    ingress.kubernetes.io/forwarding-rule: k8s-fw-default-test--f1dccaa5809866bc
+    ingress.kubernetes.io/target-proxy: k8s-tp-default-test--f1dccaa5809866bc
+    ingress.kubernetes.io/url-map: k8s-um-default-test--f1dccaa5809866bc
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  creationTimestamp: 2018-09-27T22:10:14Z
+  generation: 8
+  name: test
+  namespace: default
+  resourceVersion: "287728"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/test
+  uid: 1c201483-c2a2-11e8-af25-42010a800fc3
+spec:
+  rules:
+  - host: bkauf.com
+    http:
+      paths:
+      - backend:
+          serviceName: bkauf-gcpdemo
+          servicePort: 80
+#        path: /dialogflow
+ #     - backend:
+  #        serviceName: bkauf-gcpdemo
+   #       servicePort: 80
+    #    path: /spanner
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.190.19.173

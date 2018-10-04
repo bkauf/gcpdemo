@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bkauf-gcpdemo
+spec:
+  selector:
+    app: gcpdemo-app
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080

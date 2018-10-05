@@ -18,7 +18,7 @@ Optional Edit the env.sh file to include the necessary api keys.
 docker build -t bkauf/gcpdemo:1.1 .
 docker run -itd -p 8080:8080 bkauf/gcpdemo:1.1
 ```
-### In K8s with the container image hosted remotely
+### In GKE with Ingress Controller 
 You'd have to edit the following files to make sure the container image path was correct and your Domain name in the ingress file was already entered into your Cloud DNS config with an A record
 ```
 kubectl create -f node-deployment.yaml

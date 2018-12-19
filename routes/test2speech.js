@@ -1,4 +1,6 @@
-var express  = require('express');
+/*var express  = require('express');
+const textToSpeech = require('@google-cloud/text-to-speech');
+
 var router   = express.Router();
 
 var projectId = process.env.projectId || "";
@@ -6,10 +8,9 @@ var instanceId = process.env.instanceId || "";
 var databaseId = process.env.databaseId || "";
 const fs = require('fs');
 // Imports the Google Cloud client library
-const textToSpeech = require('@google-cloud/text-to-speech');
 // Creates a client
 const client = new textToSpeech.TextToSpeechClient();
-/* GET pubsub page. */
+//GET pubsub page.  
 router.get('/', function(req, res, next) {
 
   // The text to synthesize
@@ -46,4 +47,4 @@ router.get('/', function(req, res, next) {
 
 });
 
-module.exports = router;
+module.exports = router;*/

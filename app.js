@@ -19,7 +19,7 @@ var dialogflow = require('./routes/dialogflow');
 var pubsubPage = require('./routes/pubsub');
 var spannerPage    = require('./routes/spannerPage');
 var dlpPage    = require('./routes/dlp');
-var test2speech  = require('./routes/test2speech');
+//var test2speech  = require('./routes/test2speech');
 var status     = ""; // used for spanner callback status
 
 
@@ -44,7 +44,7 @@ app.use('/pubsub', pubsubPage);
 app.use('/dlp', dlpPage);
 app.use('/dialogflow', dialogflow);
 app.use('/spannerPage', spannerPage);
-app.use('/test2speech', test2speech);
+//app.use('/test2speech', test2speech);
 
 
 

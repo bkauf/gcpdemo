@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: test
+  name: bkaufcom
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -9,9 +9,9 @@ spec:
   - host: bkauf.com
     http:
       paths:
-      #- path: /pubsub
+      - path: /*
         #backend:
-       - backend:
+        backend:
           serviceName: bkauf-gcpdemo
           servicePort: 8080
     #  - path: /health

@@ -12,13 +12,19 @@ This app can be run as a container or google app engine project. Current capabil
 ## To Use:
 ### Docker
 You can create a container out of these file with the supplied Dockerfile or run the code in an app engine instance on GCP.
-Optional Edit the env.sh file to include the necessary api keys.
+###Optional:
+ By default nodemon is setup in the docker file however you will see the comments to enable an init.sh script where node starts normally and you can load other things like a file of variables for each GCP service. Edit the env.sh file to include the necessary api keys.
 
 ```
-docker build -t bkauf/gcpdemo:1.1 .
-docker run -itd -p 8080:8080 bkauf/gcpdemo:1.1
+docker build -t gcpdemo:4.0 .
+docker run -itd -p 8080:8080 gcpdemo:4.0
 ```
-### In GKE with Ingress Controller 
+or if you want to map for active development
+```
+docker run -itd -p 8080:8080 -v [your/local/path/]:/usr/src/app gcpdemo:4.0
+```
+
+### In GKE with Ingress Controller
 You'd have to edit the following files to make sure the container image path was correct and your Domain name in the ingress file was already entered into your Cloud DNS config with an A record
 ```
 kubectl create -f node-deployment.yaml

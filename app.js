@@ -45,10 +45,8 @@ app.use('/dlp', dlpPage);
 app.use('/dialogflow', dialogflow);
 app.use('/spannerPage', spannerPage);
 //app.use('/test2speech', test2speech);
-
-
-
 app.post('/sendpubsub',function(req,res){
+  //test
 
  var topicToken   = req.body.topicToken;
  var topicName    = req.body.topicName;
@@ -165,6 +163,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+app.listen(8080);
+
 
 function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, action,intent){//send messages to chatbase
 

@@ -18,6 +18,6 @@ RUN npm install
 COPY . /usr/src/app
 
 EXPOSE 8080
-#CMD [ "nodemon", "start" ]
+CMD [ "nodemon", "start" ]
 #Start with custom script
-ENTRYPOINT ["/usr/src/app/init.sh"]
+#ENTRYPOINT ["/usr/src/app/init.sh"]

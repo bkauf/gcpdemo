@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gcpdemo-app
-        image: bkauf/gcpdemo:3.32
+        image: bkauf/gcpdemo:4.0
         resources:
           limits:
             cpu: "0.5"

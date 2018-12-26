@@ -13,7 +13,7 @@ This app can be run as a container or google app engine project. Current capabil
 ### Docker
 You can create a container out of these file with the supplied Dockerfile or run the code in an app engine instance on GCP.
 #### Optional:
- By default nodemon is setup in the docker file however you will see the comments to enable an init.sh script where node starts normally and you can load other things like a file of variables for each GCP service. Edit the env.sh file to include the necessary api keys.
+ By default nodemon is setup in the docker file however you will see the comments to enable an init.sh script inplace of where nodemon starts. You can use this script to load other things like a file of variables for each GCP service. Edit the env.sh file to include the necessary api keys and the init.sh to start the node or nodemon server.
 
 ```
 docker build -t gcpdemo:4.0 .

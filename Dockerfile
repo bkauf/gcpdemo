@@ -19,5 +19,5 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 CMD [ "nodemon", "start" ]
-#Start with custom script
+#Start with custom script, note you cannot use both CMD and an ENTRYPOINT file
 #ENTRYPOINT ["/usr/src/app/init.sh"]

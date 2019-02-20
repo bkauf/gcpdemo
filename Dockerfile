@@ -21,6 +21,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
+#open ports
 EXPOSE 8080
 CMD [ "nodemon", "start" ]
 

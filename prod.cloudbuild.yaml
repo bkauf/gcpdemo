@@ -1,9 +1,10 @@
 steps:
-- name: 'ubuntu'
-  args: ['bash', './myscript.bash']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']
-- name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '-r', 'k8s/*', 'gs://$PROJECT_ID-kubernetes-manifests']
-  images: ['gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME']
-- name: 'gcr.io/cloud-builders/gcloud' args: ['app', 'deploy'] timeout: '1600s'
+
+- id: 'Build'
+  name: 'gcr.io/cloud-builders/npm'
+  entrypoint: npm
+  args: ['update']
+- id: 'Deploy'
+  name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', '--project cicd-event-marth25th-prod']
+timeout: '1600s'

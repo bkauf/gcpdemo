@@ -9,12 +9,13 @@ steps:
   args: ['update']
 
 - id: 'Create Container'
-- name: 'gcr.io/cloud-builders/docker'
+  name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']
 #  args: ['cp', '-r', 'k8s/*', 'gs://$PROJECT_ID-kubernetes-manifests']
 - id: 'Push Container to registry'
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME"]
+
 - id: 'Deploy'
   name: 'gcr.io/cloud-builders/kubectl'
   args:

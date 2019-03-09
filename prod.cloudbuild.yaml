@@ -5,4 +5,5 @@ steps:
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', '-r', 'k8s/*', 'gs://$PROJECT_ID-kubernetes-manifests']
-images: ['gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME']
+  images: ['gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME']
+- name: 'gcr.io/cloud-builders/gcloud' args: ['app', 'deploy'] timeout: '1600s

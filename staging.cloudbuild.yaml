@@ -6,7 +6,7 @@ steps:
 - id: 'Build'
   name: 'gcr.io/cloud-builders/npm'
   #dir: 'frontend'
-  args: [ 'npm', 'install' ]
+  args: [ 'install' ]
 
 #- name: 'gcr.io/cloud-builders/docker'
 #  args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']

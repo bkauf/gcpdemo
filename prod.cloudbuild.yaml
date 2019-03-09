@@ -1,9 +1,8 @@
 steps:
-- id: 'Build'
+- id: ' Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'
-  entrypoint: npm
-  args: ['update']
+  args: ['rebuild']
 - id: 'Deploy'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'prod.app.yaml']
+  args: ['app', 'deploy', 'prod.app.yaml','--version=$COMMIT_SHA','--quiet']
 timeout: '1600s'

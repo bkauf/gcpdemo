@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontend-production
+  name: frontend-production
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: sample
+    role: frontend
+    env: prod
+  sessionAffinity: None
+  type: LoadBalancer

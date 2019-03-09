@@ -1,0 +1,25 @@
+steps:
+- id: 'Unit tests'
+  name: 'ubuntu'
+  args: ['bash', './myscript.bash']
+- id: ' Rebuild Node Files'
+  name: 'gcr.io/cloud-builders/npm'
+  args: ['rebuild']
+- id: 'Create Container'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']
+#  args: ['cp', '-r', 'k8s/*', 'gs://$PROJECT_ID-kubernetes-manifests']
+- id: 'Push Container to registry'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME"]
+
+- id: 'Deploy'
+  name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - 'set'
+  - 'image'
+  - 'deployment/frontend-canary'
+  - 'my-container=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-f'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-tutorial'

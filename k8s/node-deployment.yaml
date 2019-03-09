@@ -16,7 +16,7 @@ spec:
         app: gcpdemo-app
     spec:
       containers:
-      - name: gcpdemo-app
+      - name: my-container
         image: bkauf/gcpdemo:4.0
         resources:
           limits:

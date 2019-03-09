@@ -6,8 +6,8 @@ steps:
 - id: 'Build'
   name: 'gcr.io/cloud-builders/npm'
   entrypoint: npm
-  args: ['install']
-  args: ['npm audit fix']
+  args: ['update']
+
 
 #- name: 'gcr.io/cloud-builders/docker'
 #  args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']

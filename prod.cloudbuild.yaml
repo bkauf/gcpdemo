@@ -1,10 +1,9 @@
 steps:
-
 - id: 'Build'
   name: 'gcr.io/cloud-builders/npm'
   entrypoint: npm
   args: ['update']
 - id: 'Deploy'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--project cicd-event-marth25th-prod']
+  args: ['app', 'deploy', 'prod.app.yaml']
 timeout: '1600s'

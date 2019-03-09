@@ -5,7 +5,7 @@ steps:
 
 - id: 'Build'
   name: 'gcr.io/cloud-builders/npm'
-  #dir: 'frontend'
+  dir: '/'
   args: [ 'npm', 'audit', 'fix' ]
 
 #- name: 'gcr.io/cloud-builders/docker'

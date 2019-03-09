@@ -13,7 +13,7 @@ spec:
         env: canary
     spec:
       containers:
-      - name: frontend
+      - name: my-container
         image: gcr.io/cicd-march-25th/gcpdemo:v1.0.1
         resources:
           limits:

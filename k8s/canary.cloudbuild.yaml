@@ -16,11 +16,10 @@ steps:
 - id: 'Deploy'
   name: 'gcr.io/cloud-builders/kubectl'
   args:
-  - set
-  - image
-  - deployment
-  - gcpdemo
-  - my-container=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME
+  - 'set'
+  - 'image'
+  - 'deployment/frontend-canary'
+  - 'my-container=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=[COMPUTE-ZONE]'
   - 'CLOUDSDK_CONTAINER_CLUSTER=[CLUSTER]'

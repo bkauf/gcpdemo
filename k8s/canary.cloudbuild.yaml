@@ -3,11 +3,6 @@ steps:
   name: 'ubuntu'
   args: ['bash', './myscript.bash']
 
-- id: 'Build'
-  name: 'gcr.io/cloud-builders/npm'
-  entrypoint: npm
-  args: ['update']
-
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']

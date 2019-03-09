@@ -15,5 +15,5 @@ steps:
 #  images: ['gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME']
 - id: 'Deploy'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy' 'staging.app.yaml']
+  args: ['app', 'deploy', 'staging.app.yaml']
 timeout: '1600s'

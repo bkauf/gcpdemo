@@ -1,5 +1,5 @@
-FROM node
-RUN apt-get update && apt-get install dnsutils -y
+FROM node:8.15.1-alpine
+RUN apk update
 
 #RUN npm install
 #

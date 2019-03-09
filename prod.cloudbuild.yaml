@@ -1,9 +1,5 @@
 steps:
-- id: 'Build'
-  name: 'gcr.io/cloud-builders/npm'
-  entrypoint: npm
-  args: ['update']
 - id: 'Deploy'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'prod.app.yaml']
+  args: ['app', 'deploy', 'prod.app.yaml','--version=$COMMIT_SHA','--quiet']
 timeout: '1600s'

@@ -13,7 +13,7 @@ WORKDIR /usr/src/app
 RUN npm install -g nodemon
 
 # Install app dependencies
-COPY package.json /usr/src/app
+#COPY package.json /usr/src/app
 
 #Install new dependencies
 RUN npm install
@@ -23,7 +23,8 @@ COPY . /usr/src/app
 
 #open ports
 EXPOSE 8080
-CMD [ "nodemon", "start" ]
+#CMD [ "nodemon", "start" ]
+CMD ["npm", "start"]
 
 #Start with custom script, note you cannot use both CMD and an ENTRYPOINT file
 #ENTRYPOINT ["/usr/src/app/init.sh"]

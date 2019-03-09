@@ -5,7 +5,7 @@ steps:
 
 - id: 'Build'
   name: 'gcr.io/cloud-builders/npm'
-  dir: '/'
+  #dir: '/'
   args: [ 'run', 'build' ]
 
 #- name: 'gcr.io/cloud-builders/docker'

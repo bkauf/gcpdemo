@@ -2,7 +2,9 @@ steps:
 - id: 'Unit tests'
   name: 'ubuntu'
   args: ['bash', './myscript.bash']
-
+- id: ' Rebuild Node Files'
+  name: 'gcr.io/cloud-builders/npm'
+  args: ['rebuild']
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']

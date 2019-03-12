@@ -7,9 +7,9 @@ steps:
   name: 'gcr.io/cloud-builders/npm'
   args: ['rebuild']
 
-- id: 'copy files into source folder'
-  name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://$PROJECT_ID-pictures/homepage', '/public/images/homepage']
+#- id: 'copy files into source folder'
+#  name: gcr.io/cloud-builders/gsutil
+#  args: ['cp', 'gs://$PROJECT_ID-pictures/homepage', '/public/images/homepage']
 
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'

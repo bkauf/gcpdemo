@@ -1,18 +1,22 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: frontend-production
 spec:
   replicas: 1
   strategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxSurge: 1
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: frontend-production
   template:
     metadata:
       name: frontend
       labels:
-        app: sample
+        app: frontend-production
         role: frontend
         env: prod
     spec:
@@ -24,20 +28,10 @@ spec:
             memory: "500Mi"
             cpu: "100m"
         imagePullPolicy: Always
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
-        env:
-        - name: COMPONENT
-          value: frontend
-        - name: BACKEND_URL
-          value: http://sample-backend-canary:8080/metadata
-        - name: VERSION
-          value: prod
         ports:
         - name: frontend
           containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080

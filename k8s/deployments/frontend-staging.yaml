@@ -1,36 +1,37 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: frontend-staging
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: frontend-staging
   template:
     metadata:
       name: frontend
       labels:
-        app: sample
-        role: frontend
-        env: canary
+        app: frontend-staging
     spec:
       containers:
       - name: my-container
-        image: gcr.io/cicd-march-25th/gcpdemo:v1.0.1
-        resources:
-          limits:
-            memory: "500Mi"
-            cpu: "100m"
+        image: gcr.io/cicd-event-march25th/gcpdemo:p4.1.9
         imagePullPolicy: Always
+        ports:
+        - name: frontend
+          containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
         readinessProbe:
           httpGet:
             path: /health
             port: 8080
-        env:
-        - name: COMPONENT
-          value: frontend
-        - name: BACKEND_URL
-          value: http://sample-backend-staging:8080/metadata
-        - name: VERSION
-          value: canary
-        ports:
-        - name: frontend
-          containerPort: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 5

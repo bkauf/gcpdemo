@@ -12,7 +12,5 @@ spec:
     targetPort: 8080
   selector:
     app: frontend-production
-    role: frontend
-    env: prod
   sessionAffinity: None
   type: LoadBalancer

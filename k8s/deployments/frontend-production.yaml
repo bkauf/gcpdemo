@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: frontend-prod
+  name: frontend-production
 spec:
   replicas: 1
   template:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: gcr.io/cicd-march-25th/gcpdemo:v1.0.1
+        image: gcr.io/cicd-march-25th-prod/gcpdemo:v1.0.1
         resources:
           limits:
             memory: "500Mi"

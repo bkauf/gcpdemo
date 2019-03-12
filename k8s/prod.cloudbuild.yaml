@@ -1,0 +1,31 @@
+steps:
+- id: 'Unit tests'
+  name: 'ubuntu'
+  args: ['bash', './myscript.bash']
+
+- id: ' Rebuild Node Files'
+  name: 'gcr.io/cloud-builders/npm'
+  args: ['rebuild']
+
+#- id: 'copy files into source folder'
+#  name: gcr.io/cloud-builders/gsutil
+#  args: ['cp', 'gs://$PROJECT_ID-pictures/homepage', '/public/images/homepage']
+
+- id: 'Create Container'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/cicd-event-march25th-prod/gcpdemo:$TAG_NAME', '.']
+
+- id: 'Push Container to Production registry'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/cicd-event-march25th-prod/gcpdemo:$TAG_NAME"]
+
+- id: 'Deploy'
+  name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - 'set'
+  - 'image'
+  - 'deployment/frontend-production'
+  - 'my-container=gcr.io/cicd-event-march25th-prod/gcpdemo:$TAG_NAME'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-f'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-tutorial'

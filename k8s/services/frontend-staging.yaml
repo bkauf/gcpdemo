@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: frontend-canary
-  name: frontend-canary
+    app: frontend-staging
+  name: frontend-staging
 spec:
   ports:
   - name: 80-80

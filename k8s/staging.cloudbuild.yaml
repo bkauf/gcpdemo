@@ -22,4 +22,4 @@ steps:
   - 'my-container=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=prod-cluster-1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-tutorial'

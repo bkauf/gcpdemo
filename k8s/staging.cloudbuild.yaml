@@ -23,3 +23,4 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-tutorial'
+  - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'

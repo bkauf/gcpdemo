@@ -27,6 +27,6 @@ steps:
   - 'deployment/frontend-production'
   - 'my-container=gcr.io/cicd-event-march25th-prod/gcpdemo:$TAG_NAME'
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-f'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=prod-cluster-1'
   - 'CLOUDSDK_CORE_PROJECT=cicd-event-march25th-prod'

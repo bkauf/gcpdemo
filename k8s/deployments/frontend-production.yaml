@@ -4,6 +4,10 @@ metadata:
   name: frontend-production
 spec:
   replicas: 1
+  strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
   template:
     metadata:
       name: frontend
@@ -24,6 +28,9 @@ spec:
           httpGet:
             path: /health
             port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
         env:
         - name: COMPONENT
           value: frontend

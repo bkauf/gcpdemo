@@ -1,1 +1,1 @@
-_ANIMAL="dogs"
+dogs

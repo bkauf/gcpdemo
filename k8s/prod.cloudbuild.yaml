@@ -2,7 +2,7 @@ steps:
 - id: 'Unit tests'
   name: 'ubuntu'
   entrypoint: "bash"
-  args: ['bash', '$(< animal.sh) > _ANIMAL']
+  args: ['$(< animal.sh) > _ANIMAL']
 
 
 - id: ' Rebuild Node Files'
@@ -32,3 +32,5 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=prod-cluster-1'
   - 'CLOUDSDK_CORE_PROJECT=cicd-event-march25th-prod'
+options:
+ machineType: 'N1_HIGHCPU_8'

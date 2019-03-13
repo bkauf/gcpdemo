@@ -1,8 +1,8 @@
 steps:
-- id: 'Unit tests'
-  name: 'ubuntu'
-  entrypoint: "bash"
-  args: ['echo "$(cat animal.sh)" > _ANIMAL']
+#- id: 'Unit tests'
+#  name: 'ubuntu'
+#  entrypoint: "bash"
+#  args: ['cat animal.sh)" > _ANIMAL']
 
 - id: ' Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'
@@ -10,7 +10,7 @@ steps:
 
 - id: 'copy files into source folder'
   name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://$PROJECT_ID-pictures/$(cat _ANIMAL)/*', '/public/images/homepage/']
+  args: ['cp', 'gs://$PROJECT_ID-pictures/dogs/*', '/public/images/homepage/']
 
 
 

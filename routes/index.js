@@ -6,7 +6,7 @@ var hostname = os.hostname();
 router.get('/', function(req, res, next) {
 
 
-  res.render('index', { title: '::Cloud Tester::', container: hostname });
+  res.render('index', { title: ':Cloud Tester:', container: hostname });
 });
 
 module.exports = router;

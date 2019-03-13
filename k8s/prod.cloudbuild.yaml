@@ -7,9 +7,9 @@ steps:
   name: 'gcr.io/cloud-builders/npm'
   args: ['rebuild']
 
-#- id: 'copy files into source folder'
-#  name: gcr.io/cloud-builders/gsutil
-#  args: ['cp', 'gs://$PROJECT_ID-pictures/homepage', '/public/images/homepage']
+- id: 'copy files into source folder'
+  name: gcr.io/cloud-builders/gsutil
+  args: ['cp', 'gs://$PROJECT_ID-pictures/$(cat animal.sh)/*', '/public/images/homepage/']
 
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
@@ -27,5 +27,6 @@ steps:
   - 'deployment/frontend-production'
   - 'my-container=gcr.io/cicd-event-march25th-prod/gcpdemo:$TAG_NAME'
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-f'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-tutorial'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=prod-cluster-1'
+  - 'CLOUDSDK_CORE_PROJECT=cicd-event-march25th-prod'

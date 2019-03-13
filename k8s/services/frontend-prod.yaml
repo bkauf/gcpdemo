@@ -11,8 +11,6 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: sample
-    role: frontend
-    env: prod
+    app: frontend-production
   sessionAffinity: None
   type: LoadBalancer

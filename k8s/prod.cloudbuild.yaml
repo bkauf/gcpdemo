@@ -9,7 +9,8 @@ steps:
 
 - id: 'copy files into source folder'
   name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://$PROJECT_ID-pictures/$(< animal.sh)/*', '/public/images/homepage/']
+  #args: ['cp', 'gs://$PROJECT_ID-pictures/$(< animal.sh)/*', '/public/images/homepage/']
+  args: ['cp', 'gs://$PROJECT_ID-pictures/', '/public/images/']
 
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
@@ -19,7 +20,7 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/cicd-event-march25th-prod/gcpdemo:$TAG_NAME"]
 
-- id: 'Deploy'
+- id: 'Deploy to Production Cluster'
   name: 'gcr.io/cloud-builders/kubectl'
   args:
   - 'set'

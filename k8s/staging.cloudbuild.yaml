@@ -10,7 +10,7 @@ steps:
 
 - id: 'copy files into source folder'
   name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://$PROJECT_ID-pictures/dogs/*', 'public/images/homepage/']
+  args: ['cp', 'gs://$PROJECT_ID-pictures/dogs/', 'public/images/homepage/']
 
 
 
@@ -34,4 +34,4 @@ steps:
   - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-tutorial'
   - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
 options:
- machineType: 'N1_HIGHCPU_8'
+ #machineType: 'N1_HIGHCPU_8'

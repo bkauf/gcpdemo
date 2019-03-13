@@ -14,11 +14,11 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']
 #  args: ['cp', '-r', 'k8s/*', 'gs://$PROJECT_ID-kubernetes-manifests']
-- id: 'Push Container to registry'
+- id: 'Push Container to Staging Registry'
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME"]
 
-- id: 'Deploy'
+- id: 'Deploy to Staging Cluster'
   name: 'gcr.io/cloud-builders/kubectl'
   args:
   - 'set'

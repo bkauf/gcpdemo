@@ -1,14 +1,17 @@
 steps:
 - id: 'Unit tests'
   name: 'ubuntu'
-  args: ['bash', './myscript.bash']
+  entrypoint: "bash"
+  args: ['bash', '$(< animal.sh) > _ANIMAL']
+
+
 - id: ' Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'
   args: ['rebuild']
 
 - id: 'copy files into source folder'
   name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://$PROJECT_ID-pictures/$(< animal.sh)/*', '/public/images/homepage/']
+  args: ['cp', 'gs://$PROJECT_ID-pictures/$(cat _ANIMAL)/*', '/public/images/homepage/']
 
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'

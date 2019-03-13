@@ -5,6 +5,11 @@ steps:
 - id: ' Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'
   args: ['rebuild']
+
+- id: 'copy files into source folder'
+  name: gcr.io/cloud-builders/gsutil
+  args: ['source',  './animal.sh', '|', 'cp', 'gs://$PROJECT_ID-pictures/$ANIMAL/*', '/public/images/homepage/']
+
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']

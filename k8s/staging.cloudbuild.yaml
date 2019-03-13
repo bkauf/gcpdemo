@@ -10,7 +10,7 @@ steps:
 
 - id: 'copy files into source folder'
   name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'gs://$PROJECT_ID-pictures/dogs/', 'public/images/homepage/']
+  args: ['cp', 'gs://$PROJECT_ID-pictures/dogs/', 'public/images/']
 
 
 

@@ -1,23 +1,21 @@
 steps:
-#- id: 'Unit tests'
-#  name: 'ubuntu'
-#  entrypoint: "bash"
-#  args: ['cat animal.sh)" > _ANIMAL']
+- id: 'Unit tests'
+  name: 'ubuntu'
+  entrypoint: "bash"
+  args: ['cat animal.sh)" > _ANIMAL']
 
 - id: ' Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'
   args: ['rebuild']
 
-- id: 'copy files into source folder'
+- id: 'Copy Files into Source Folder'
   name: gcr.io/cloud-builders/gsutil
   args: ['cp', 'gs://$PROJECT_ID-pictures/dogs/*', 'public/images/']
-
-
 
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME', '.']
-#  args: ['cp', '-r', 'k8s/*', 'gs://$PROJECT_ID-kubernetes-manifests']
+
 - id: 'Push Container to Staging Registry'
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/gcpdemo:$TAG_NAME"]

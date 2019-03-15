@@ -1,8 +1,8 @@
-steps:
-- id: 'Unit tests'
-  name: 'ubuntu'
-  entrypoint: "bash"
-  args: ['$(< animal.sh) > _ANIMAL']
+#steps:
+#- id: 'Unit tests'
+#  name: 'ubuntu'
+#  entrypoint: "bash"
+#  args: ['$(< animal.sh) > _ANIMAL']
 
 - id: ' Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'

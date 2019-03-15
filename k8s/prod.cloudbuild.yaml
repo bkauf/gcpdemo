@@ -1,4 +1,4 @@
-#steps:
+steps:
 #- id: 'Unit tests'
 #  name: 'ubuntu'
 #  entrypoint: "bash"

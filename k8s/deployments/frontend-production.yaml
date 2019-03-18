@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: frontend-production
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: frontend-production
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: frontend-production
+    spec:
+      containers:
+      - name: my-container
+        image: gcr.io/cicd-event-march25th-prod/gcpdemo:p4.1.9
+        imagePullPolicy: Always
+        ports:
+        - name: frontend
+          containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 5

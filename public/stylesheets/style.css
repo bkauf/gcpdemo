@@ -4,6 +4,7 @@ body {
   /*background-image: url("../images/whale-long.svg");
   background-repeat: no-repeat;
   background-position: center 270px; */
+  background-color:white;
 }
 
 a {
@@ -38,9 +39,13 @@ padding: 10px;
 }
 #spacer{width: 100%;}
 #main{width: 100%;}
-
+#main-images{
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+}
 #menu{
-  width:33%;
+  /*width:33%;*/
   margin-left: 0;
 }
 #action{

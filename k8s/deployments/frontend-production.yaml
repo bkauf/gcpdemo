@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: gcr.io/cicd-event-march25th-prod/gcpdemo:p4.1.9
+        image: bkauf/gcpdemo:4.0
         imagePullPolicy: Always
         ports:
         - name: frontend

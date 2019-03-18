@@ -27,9 +27,8 @@ docker run -itd -p 8080:8080 -v [your/local/path/]:/usr/src/app gcpdemo:4.0
 ### In GKE with Ingress Controller
 You'd have to edit the following files to make sure the container image path was correct and your Domain name in the ingress file was already entered into your Cloud DNS config with an A record
 ```
-kubectl create -f node-deployment.yaml
-kubectl create -f bkauf-service.yaml
-kubectl create -f node-ingress.yaml
+kubectl create -f k8s/deployments/frontend-staging.yaml
+kubectl create -f k8s/services/frontend-staging.yaml
 ```
 
 ![gcpdemo](/gcpdemo-ss.png?raw=true "GCP Demo")

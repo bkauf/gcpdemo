@@ -1,6 +1,6 @@
 {
   "name": "gcpdemo",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -15,9 +15,11 @@
     "debug": "^2.6.9",
     "express": "^4.16.4",
     "http": "0.0.0",
+    "mongodb": "^3.2.2",
     "morgan": "^1.9.1",
     "npm": "^6.9.0",
     "pug": "^2.0.3",
+    "random-words": "^1.1.0",
     "serve-favicon": "^2.5.0"
   },
   "author": "Brian Kaufman",

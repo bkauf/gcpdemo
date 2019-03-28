@@ -2,6 +2,7 @@
 var request      = require('request');
 var express      = require('express');
 var app          = express();
+const port       = 8080;
 var path         = require('path');
 var favicon      = require('serve-favicon');
 var logger       = require('morgan');
@@ -14,13 +15,27 @@ var spnrFns      = require('./spanner/dbfn.js');
 /* pages */
 var index      = require('./routes/index');
 var health     = require('./routes/health');
+var db         = require('./routes/db');
 var kill       = require('./routes/kill');
 var dialogflow = require('./routes/dialogflow');
 var pubsubPage = require('./routes/pubsub');
 var spannerPage    = require('./routes/spannerPage');
 var dlpPage    = require('./routes/dlp');
+var randomWords = require('random-words');
 //var test2speech  = require('./routes/test2speech');
 var status     = ""; // used for spanner callback status
+
+//var MongoClient = require('mongodb').MongoClient;
+//var newdb= randomWords();
+//var url = "mongodb://34.73.21.200:27017/"+newdb;
+
+//MongoClient.connect(url, function(err, db) {
+//  if (err) throw err;
+//  console.log("Database created: "+newdb);
+//  db.close();
+//});
+
+
 
 
 // test
@@ -40,6 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/health', health);
 app.use('/kill', kill);
+app.use('/db', db);
 app.use('/pubsub', pubsubPage);
 app.use('/dlp', dlpPage);
 app.use('/dialogflow', dialogflow);
@@ -163,7 +179,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-//app.listen(8080);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
 function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, action,intent){//send messages to chatbase

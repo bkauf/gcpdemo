@@ -37,7 +37,6 @@ padding: 10px;
   color: #000;
   width: 100%;
 }
-#spacer{width: 100%;}
 #main{width: 100%;}
 #main-images{
 margin-left: auto;
@@ -48,9 +47,24 @@ text-align: center;
   /*width:33%;*/
   margin-left: 0;
 }
+#menu ul li, #body ul li{
+  list-style-type: none;
+  float: left;
+  padding-left: 15px;
+  display: inline-block;
+}
+#menu ul, #body ul{
+  text-align: center;
+}
+
 #action{
-  width:33%;
+  width:100px;
   float:right;
+}
+#body{
+  width: 100%;
+  min-width: 100%;
+  margin-top: 15px;
 }
 #pubsubMessage{
   width:750px;

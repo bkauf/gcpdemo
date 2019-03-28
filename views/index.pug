@@ -14,17 +14,24 @@ html
           h1=title
           h2 Hostname: #{container}
 
-      #spacer Action Menu
       #main
         #action
-          #ul.action
-            li#status
+          div#status
         #menu
+          ul
 
+            li
               a(href="#health").health Get Health
-              |
+
+            li
               a(href="#kill").kill Kill Container
-              |
-              a(href="pubsub") PubSub
-        #main-images
-         img(src="/images/homepage.jpg")
+            li
+              a(href="/spannerPage").spanner Cloud Spanner
+            li
+              a(href="/dialogflow").dialogflow Dialogflow
+            li
+              a(href="/db").db DB
+          br
+        #body
+          div
+          img(src="/images/nyc-image.jpg")

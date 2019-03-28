@@ -19,8 +19,8 @@ spec:
         app: frontend-production
     spec:
       containers:
-      - name: my-container
-        image: bkauf/gcpdemo:4.0
+      - name: webserver
+        image: bkauf/gcpdemo:4.1
         imagePullPolicy: Always
         ports:
         - name: frontend

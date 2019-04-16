@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: webserver
-        image: bkauf/gcpdemo:4.1
+        image: bkauf/gcpdemo
         imagePullPolicy: Always
         ports:
         - name: frontend
@@ -35,3 +35,9 @@ spec:
             port: 8080
           initialDelaySeconds: 20
           periodSeconds: 5
+      - name: database
+        image: mongo
+        imagePullPolicy: Always
+        ports:
+        - name: inbound
+          containerPort: 27017

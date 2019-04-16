@@ -13,27 +13,19 @@ const pubsub     = new PubSub();
 //const spanner    = require('@google-cloud/spanner');
 var spnrFns      = require('./spanner/dbfn.js');
 /* pages */
-var index      = require('./routes/index');
-var health     = require('./routes/health');
-var db         = require('./routes/db');
-var kill       = require('./routes/kill');
-var dialogflow = require('./routes/dialogflow');
-var pubsubPage = require('./routes/pubsub');
-var spannerPage    = require('./routes/spannerPage');
-var dlpPage    = require('./routes/dlp');
-var randomWords = require('random-words');
+var index       = require('./routes/index');
+var health      = require('./routes/health');
+var db          = require('./routes/db');
+var kill        = require('./routes/kill');
+var dialogflow  = require('./routes/dialogflow');
+var pubsubPage  = require('./routes/pubsub');
+var spannerPage = require('./routes/spannerPage');
+var dlpPage     = require('./routes/dlp');
+
 //var test2speech  = require('./routes/test2speech');
 var status     = ""; // used for spanner callback status
 
-//var MongoClient = require('mongodb').MongoClient;
-//var newdb= randomWords();
-//var url = "mongodb://34.73.21.200:27017/"+newdb;
 
-//MongoClient.connect(url, function(err, db) {
-//  if (err) throw err;
-//  console.log("Database created: "+newdb);
-//  db.close();
-//});
 
 
 

@@ -16,12 +16,12 @@ You can create a container out of these file with the supplied Dockerfile or run
  By default nodemon is setup in the Dockerfile however you will see the comments to enable an init.sh script inplace of where nodemon starts. You can use this script to load other things like a file of variables for each GCP service. Edit the env.sh file to include the necessary api keys and the init.sh to start the node or nodemon server.
 
 ```
-docker build -t gcpdemo:4.0 .
-docker run -itd -p 8080:8080 gcpdemo:4.0
+docker build -t gcpdemo:5.0 .
+docker run -itd -p 8080:8080 gcpdemo:5.0
 ```
 or if you want to map for active development
 ```
-docker run -itd -p 8080:8080 -v [your/local/path/]:/usr/src/app gcpdemo:4.0
+docker run -itd -p 8080:8080 -v [your/local/path/]:/usr/src/app gcpdemo:5.0
 ```
 
 ### In GKE with Ingress Controller

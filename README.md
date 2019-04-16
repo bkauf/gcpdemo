@@ -24,7 +24,7 @@ or if you want to map for active development
 docker run -itd -p 8080:8080 -v [your/local/path/]:/usr/src/app gcpdemo:5.0
 ```
 
-### In GKE with Ingress Controller
+### In GKE with Global LB
 You'd have to edit the following files to make sure the container image path was correct. Default is pulling bkauf/gcpdemo:5.0 from dockerhub.com
 ```
 kubectl create -f k8s/deployments/frontend-staging.yaml

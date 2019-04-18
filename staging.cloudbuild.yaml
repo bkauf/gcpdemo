@@ -1,7 +1,7 @@
 steps:
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$_IMAGE_REPO/gcpdemo:$SHORT_SHA', '.']
+  args: ['build', '--tag=gcr.io/$_CLUSTER_PROJECT/gcpdemo:$SHORT_SHA', '.']
 
 - id: 'Push Container to Staging registry'
   name: 'gcr.io/cloud-builders/docker'

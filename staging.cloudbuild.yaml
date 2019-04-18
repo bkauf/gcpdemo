@@ -18,7 +18,7 @@ steps:
     kubectl set image deployment/frontend server=gcr.io/$_IMAGE_REPO/frontend:$SHORT_SHA
     kubectl get deployment -o yaml > $_CLUSTER_NAME-deployments.yaml
 # Prepare for github to store k8s config
-
+#
 # id: 'Copy Git SSH Auth Key into Source Folder'
 #  name: gcr.io/cloud-builders/gsutil
 #  args: ['cp', 'gs://$PROJECT_ID-github/github_rsa', '/workspace/id_rsa']

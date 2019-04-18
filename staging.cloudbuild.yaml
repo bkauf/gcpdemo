@@ -5,7 +5,7 @@ steps:
 
 - id: 'Push Container to Staging registry'
   name: 'gcr.io/cloud-builders/docker'
-  args: ["push", "gcr.io/$_IMAGE_REPO/gcpdemo:$SHORT_SHA"]
+  args: ["push", "gcr.io/$_CLUSTER_PROJECT//gcpdemo:$SHORT_SHA"]
 
 
 - id: 'Deploy and get Manifest'

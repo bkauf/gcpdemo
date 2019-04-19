@@ -11,6 +11,7 @@ steps:
   name: 'gcr.io/cloud-builders/kubectl'
   entrypoint: 'bash'
   args:
+    
   - '-c' # pass what follows as a command to bash
   - |
     gcloud container clusters get-credentials --zone=$_CLUSTER_ZONE --project=$_CLUSTER_PROJECT $_CLUSTER_NAME

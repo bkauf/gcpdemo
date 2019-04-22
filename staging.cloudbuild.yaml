@@ -45,7 +45,7 @@ steps:
   name: 'gcr.io/cloud-builders/git'
   dir: $_CONFIG_REPO
   env:
-  - GIT_SSH=/workspace/src/git-ssh.sh
+  - GIT_SSH=git-ssh.sh
   args:
   - push
   - git@github.com:bkauf/$_CONFIG_REPO

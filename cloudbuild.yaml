@@ -16,12 +16,11 @@ steps:
   args:
   - 'set'
   - 'image'
-  - 'deployment/frontend'
+  - 'deployment/frontend-production'
   - 'webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
-
 
 #- id: 'Deploy and get Manifest'
 #  name: 'gcr.io/cloud-builders/kubectl'

@@ -10,7 +10,7 @@ steps:
 
 
 # This step deploys the new version of our container image
-# in the hello-cloudbuild Kubernetes Engine cluster.
+# in the specified  Kubernetes Engine cluster.
 - id: 'Deploy to K8s'
   name: 'gcr.io/cloud-builders/kubectl'
   args:
@@ -21,7 +21,6 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
-
 
 #- id: 'Deploy and get Manifest'
 #  name: 'gcr.io/cloud-builders/kubectl'

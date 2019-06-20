@@ -22,6 +22,7 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
+
 #- id: 'Deploy and get Manifest'
 #  name: 'gcr.io/cloud-builders/kubectl'
 #  entrypoint: 'bash'

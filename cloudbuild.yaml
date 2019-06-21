@@ -20,7 +20,6 @@ steps:
   args: ["push", "gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID"]
   waitFor: ['Create Container']
 
-
 # This step deploys the new version of our container image
 # to the specified  Kubernetes Engine cluster.
 - id: 'Deploy to K8s'

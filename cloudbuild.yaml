@@ -1,6 +1,5 @@
 steps:
 
-
 - id: 'Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'
   args: ['rebuild']

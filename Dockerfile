@@ -13,7 +13,7 @@ RUN npm install -g nodemon
 # Install app dependencies
 COPY package.json /usr/src/app
 
-RUN npm rebuild
+RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 

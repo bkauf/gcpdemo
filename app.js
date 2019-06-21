@@ -171,7 +171,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+//app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
 function chatbase(chatToken,direction, sessionID, messageUser,messageAgent, action,intent){//send messages to chatbase

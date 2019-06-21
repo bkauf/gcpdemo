@@ -13,7 +13,7 @@
 #
 # [START runtime]
 runtime: nodejs8
-#service: prod
+service: prod
 #runtime: custom
 #env: flex
 # [END runtime]

@@ -14,8 +14,7 @@
 # [START runtime]
 runtime: nodejs8
 service: prod
-skip_files:
-  - Dockerfile
+
 #runtime: custom
 #env: flex
 # [END runtime]

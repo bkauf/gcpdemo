@@ -8,7 +8,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # restart server on file change
-#RUN npm install -g nodemon
+RUN npm install -g nodemon
 
 # Install app dependencies
 COPY package.json /usr/src/app

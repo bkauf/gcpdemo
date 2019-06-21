@@ -22,7 +22,7 @@ steps:
 
 
 # This step deploys the new version of our container image
-# in the specified  Kubernetes Engine cluster.
+# to the specified  Kubernetes Engine cluster.
 - id: 'Deploy to K8s'
   name: 'gcr.io/cloud-builders/kubectl'
   waitFor: ['Push to Registry']

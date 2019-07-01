@@ -32,7 +32,7 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
-
+  
 #secrets:
 #- kmsKeyName: projects/bkauf-cloud-build/locations/global/keyRings/cloudbuild/cryptoKeys/weatherapi
 #  secretEnv:

@@ -9,9 +9,6 @@ steps:
     echo $COMMIT_SHA > buildID
     npm install
 
-- id: 'Rebuild Node Files'
-  name: 'gcr.io/cloud-builders/npm'
-  args: ['install']
 
 - id: 'Deploy to App Engine'
   name: 'gcr.io/cloud-builders/gcloud'

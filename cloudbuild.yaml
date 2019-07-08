@@ -8,7 +8,6 @@ steps:
     echo $COMMIT_SHA > buildID
     npm install
 
-
 - id: 'Deploy to App Engine'
   name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', 'app.yaml','--version=$COMMIT_SHA','--quiet']
@@ -23,7 +22,7 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID"]
   waitFor: ['Create Container']
-  
+
 # This step deploys the new version of our container image
 # to the specified  Kubernetes Engine cluster.
 - id: 'Deploy to K8s'

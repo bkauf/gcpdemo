@@ -31,7 +31,7 @@ kubectl create -f k8s/deployments/frontend-staging.yaml
 kubectl create -f k8s/services/frontend-staging.yaml
 ```
 
-![gcpdemo](/gcpdemo-ss.png?raw=true "GCP Demo")
+![gcpdemo](/public/images/gcpdemo-ss.png?raw=true "GCP Demo")
 
 ## Dialogflow bot screen
-![gcpdemo](/dialogflow1-ss.png?raw=true "GCP Dialogflow")
+![gcpdemo](/public/images/dialogflow1-ss.png?raw=true "GCP Dialogflow")

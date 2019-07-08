@@ -1,4 +1,13 @@
 steps:
+- id: 'Rebuild Node Files'
+  name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+  entrypoint: 'bash'
+  args:
+  - '-c' # pass what follows as a command to bash
+  - |
+    echo $COMMIT_SHA > buildID
+    npm install
 
 - id: 'Rebuild Node Files'
   name: 'gcr.io/cloud-builders/npm'

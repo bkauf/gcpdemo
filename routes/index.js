@@ -7,9 +7,10 @@ var fs       = require('fs');
 
 router.get('/', function(req, res, next) {
 
-  fs.readFile('buildID', 'utf8', function(err, contents) {
-    var buildID = contents;
-    res.render('index', { title: '::Cloud Tester::', container: hostname, buildID: buildID });
+  fs.readFile('buildDetails', 'utf8', function(err, contents) {
+    var buildDts = JSON.parse(contents);
+
+    res.render('index', { title: '::Cloud Tester::', container: hostname, buildID: buildDts.buildID, commitID: buildDts.commitID });
   });
 
 

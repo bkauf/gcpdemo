@@ -5,7 +5,7 @@ steps:
   args:
   - '-c' # pass what follows as a command to bash
   - |
-    echo $COMMIT_SHA > buildID
+    echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
     npm install
 
 - id: 'Deploy to App Engine'

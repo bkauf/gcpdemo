@@ -26,7 +26,7 @@ steps:
 # Push container to Google GKE
 - id: 'Deploy to GKE'
   name: 'gcr.io/cloud-builders/kubectl'
-  waitFor: ['Push to Registry']
+  waitFor: ['Push to GCR Container Registry']
   args:
   - 'set'
   - 'image'
@@ -39,7 +39,7 @@ steps:
 # Push container to AWS EKS
 - name: 'gcr.io/bkauf-cloud-build/panick-aws-tools'
   id: 'Deploy to EKS'
-  waitFor: ['Push to Registry']
+  waitFor: ['Push to GCR Container Registry']
   entrypoint: 'sh'
   args:
   - -xe

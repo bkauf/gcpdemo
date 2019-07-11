@@ -16,7 +16,7 @@ COPY package.json /usr/src/app
 RUN npm install
 # Bundle app source
 COPY . /usr/src/app
-
+#
 #Install new dependencies
 #RUN npm update
 #open ports

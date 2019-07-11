@@ -18,13 +18,13 @@ steps:
   args: ['build', '--tag=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID', '.']
   waitFor: ['Rebuild Node Files']
 
-- id: 'Push to Registry'
+- id: 'Push to GCR Container Registry'
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID"]
   waitFor: ['Create Container']
 
 # Push container to Google GKE
-- id: 'Deploy to K8s'
+- id: 'Deploy to GKE'
   name: 'gcr.io/cloud-builders/kubectl'
   waitFor: ['Push to Registry']
   args:
@@ -57,8 +57,11 @@ steps:
      kubectl set image deployment/frontend-production webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID
      echo "Deployment to EKS complete!"
   secretEnv: ['AWS_SECRET_KEY']
-  
+
 secrets:
 - kmsKeyName: projects/bkauf-cloud-build/locations/global/keyRings/multi-cloud-demo-keyring/cryptoKeys/primary-key
   secretEnv:
     AWS_SECRET_KEY: 'CiQApb8sr/+aL/7E6PZXsrz9mkCiLs12HBV3mez9bypm1v765vgSUQCNUYOTKQidaT62K5DLI86warbBSWcQXVGQeiqexEAzHTEFhxs5WB5gntolN9tdogNgFgh1VvXsAJ2/l3qJXz7H1CvX13Z13CwH+pBDxZgOYA=='
+#options:
+# machineType: 'N1_HIGHCPU_8'
+# diskSizeGb: 200

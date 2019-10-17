@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: webserver
-        image: bkauf/gcpdemo:5.0
+        image: gcr.io/bkauf-cloud-build/gcpdemo:6.1
         imagePullPolicy: Always
         ports:
         - name: frontend

@@ -8,11 +8,6 @@ steps:
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
     npm install
 
-- id: 'Deploy to App Engine'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'app.yaml','--version=$COMMIT_SHA','--quiet']
-  waitFor: ['Rebuild Node Files']
-
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID', '.']
@@ -36,32 +31,34 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
-# Push container to AWS EKS
-- name: 'gcr.io/bkauf-cloud-build/panick-aws-tools'
-  id: 'Deploy to EKS'
-  waitFor: ['Push to GCR Container Registry']
-  entrypoint: 'sh'
-  args:
-  - -xe
-  - -c
-  - |
-     echo "Configuring AWS credentials and configs..."
-     export AWS_ACCESS_KEY_ID=AKIAY47XAHKDEGVY3BUP
-     export AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_KEY
-     export AWS_DEFAULT_REGION=us-west-2
-     echo "Test file upload to S3"
-     touch file-to-upload.txt
-     aws s3 cp file-to-upload.txt s3://nickpan-s3-bucket/file-to-upload.txt
-     echo "Configuring kubectl to point to EKS cluster"
-     aws eks update-kubeconfig --name eksworkshop-eksctl # this updates kubeconfig to pull iam tokens using aws-cli
-     kubectl set image deployment/frontend-production webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID
-     echo "Deployment to EKS complete!"
-  secretEnv: ['AWS_SECRET_KEY']
+  
 
-secrets:
-- kmsKeyName: projects/bkauf-cloud-build/locations/global/keyRings/multi-cloud-demo-keyring/cryptoKeys/primary-key
-  secretEnv:
-    AWS_SECRET_KEY: 'CiQApb8sr/+aL/7E6PZXsrz9mkCiLs12HBV3mez9bypm1v765vgSUQCNUYOTKQidaT62K5DLI86warbBSWcQXVGQeiqexEAzHTEFhxs5WB5gntolN9tdogNgFgh1VvXsAJ2/l3qJXz7H1CvX13Z13CwH+pBDxZgOYA=='
+# Push container to AWS EKS
+#- name: 'gcr.io/bkauf-cloud-build/panick-aws-tools'
+#  id: 'Deploy to EKS'
+#  waitFor: ['Push to GCR Container Registry']
+#  entrypoint: 'sh'
+#  args:
+#  - -xe
+#  - -c
+#  - |
+#     echo "Configuring AWS credentials and configs..."
+#     export AWS_ACCESS_KEY_ID=AKIAY47XAHKDEGVY3BUP
+#     export AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_KEY
+#     export AWS_DEFAULT_REGION=us-west-2
+#     echo "Test file upload to S3"
+#     touch file-to-upload.txt
+#     aws s3 cp file-to-upload.txt s3://nickpan-s3-bucket/file-to-upload.txt
+#     echo "Configuring kubectl to point to EKS cluster"
+#     aws eks update-kubeconfig --name eksworkshop-eksctl # this updates kubeconfig to pull iam tokens using aws-cli
+#     kubectl set image deployment/frontend-production webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID
+#     echo "Deployment to EKS complete!"
+#  secretEnv: ['AWS_SECRET_KEY']
+
+#secrets:
+#- kmsKeyName: projects/bkauf-cloud-build/locations/global/keyRings/multi-cloud-demo-keyring/cryptoKeys/primary-key
+#  secretEnv:
+#    AWS_SECRET_KEY: 'CiQApb8sr/+aL/7E6PZXsrz9mkCiLs12HBV3mez9bypm1v765vgSUQCNUYOTKQidaT62K5DLI86warbBSWcQXVGQeiqexEAzHTEFhxs5WB5gntolN9tdogNgFgh1VvXsAJ2/l3qJXz7H1CvX13Z13CwH+pBDxZgOYA=='
 #options:
 # machineType: 'N1_HIGHCPU_8'
 # diskSizeGb: 200

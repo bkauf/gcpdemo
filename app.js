@@ -21,22 +21,14 @@ var dialogflow  = require('./routes/dialogflow');
 var pubsubPage  = require('./routes/pubsub');
 var spannerPage = require('./routes/spannerPage');
 var dlpPage     = require('./routes/dlp');
+var loaderPage   = require('./routes/loaderio');
+
 
 //var test2speech  = require('./routes/test2speech');
 var status     = ""; // used for spanner callback status
-
-
-
-
-
-
-// test
-//# view engine setup
-//app.set('views', path.join(__dirname, 'views'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -52,9 +44,9 @@ app.use('/pubsub', pubsubPage);
 app.use('/dlp', dlpPage);
 app.use('/dialogflow', dialogflow);
 app.use('/spannerPage', spannerPage);
-//app.use('/test2speech', test2speech);
+app.use('/loaderio-b1551541d32815292dec8c22ec8c1972', loaderPage);
+
 app.post('/sendpubsub',function(req,res){
-  //test
 
  var topicToken   = req.body.topicToken;
  var topicName    = req.body.topicName;

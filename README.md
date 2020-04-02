@@ -27,8 +27,8 @@ docker run -itd -p 8080:8080 -v [your/local/path/]:/usr/src/app gcpdemo:5.0
 ### In GKE with Global LB
 You'd have to edit the following files to make sure the container image path was correct. Default is pulling bkauf/gcpdemo:5.0 from dockerhub.com
 ```
-kubectl create -f k8s/deployments/frontend-staging.yaml
-kubectl create -f k8s/services/frontend-staging.yaml
+kubectl create -f k8s/deployments/frontend-production.yaml
+kubectl create -f k8s/services/frontend-prod.yaml
 ```
 
 ![gcpdemo](/public/images/gcpdemo-ss.png?raw=true "GCP Demo")

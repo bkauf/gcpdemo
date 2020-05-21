@@ -5,6 +5,7 @@ steps:
   args:
   - '-c' # pass what follows as a command to bash
   - |
+    echo 'New Commit":"$COMMIT_SHA"'
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
     npm install
 
@@ -31,6 +32,14 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
+- id: 'Finished'
+  name: 'gcr.io/cloud-builders/npm'
+  entrypoint: 'bash'
+  args:
+  - '-c' # pass what follows as a command to bash
+  - |
+    echo 'New Deploy":"$COMMIT_SHA"'
+   
   
 
 # Push container to AWS EKS

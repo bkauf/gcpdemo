@@ -39,7 +39,7 @@ steps:
   args:
   - '-c' # pass what follows as a command to bash
   - |
-    node getCommit.js bkauf/gcpdemo $COMMIT_SHA
+    /usr/bin/node getCommit.js bkauf/gcpdemo $COMMIT_SHA
 
    
 

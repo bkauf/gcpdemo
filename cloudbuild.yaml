@@ -39,7 +39,7 @@ steps:
   args:
   - '-c' # pass what follows as a command to bash
   - |
-    /usr/bin/node getCommit.js bkauf/gcpdemo $COMMIT_SHA
+    node getCommit.js bkauf/gcpdemo $COMMIT_SHA
    
 
 # Push container to AWS EKS

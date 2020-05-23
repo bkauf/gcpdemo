@@ -33,7 +33,7 @@ steps:
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
 - id: 'Dora Metrics'
-  name: 'cr.io/bkauf-cloud-build/leadtime:1.0'
+  name: 'gcr.io/bkauf-cloud-build/leadtime:1.0'
   entrypoint: 'bash'
   args:
   - '-c' # pass what follows as a command to bash

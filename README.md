@@ -1,7 +1,6 @@
 
 # Node.js app that allows you to test various GCP products/features
 
-
 This app can be run as a container or google app engine project. Current capabilities include:
 
 * Ability to toggle the /health page from a 200 to a 500 Error for health check testing

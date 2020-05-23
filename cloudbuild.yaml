@@ -35,11 +35,9 @@ steps:
 - id: 'Dora Metrics'
   name: 'gcr.io/bkauf-cloud-build/leadtime:1.0'
   waitFor: ['Deploy to GKE']
-  entrypoint: 'bash'
   args:
-  - '-c' # pass what follows as a command to bash
-  - |
-    node getCommit.js bkauf/gcpdemo $COMMIT_SHA
+  - 'bkauf/gcpdemo'
+  - $COMMIT_SHA
    
 
 # Push container to AWS EKS

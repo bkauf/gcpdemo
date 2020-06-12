@@ -51,7 +51,7 @@ steps:
   args:
   - 'bkauf/gcpdemo'
   - $COMMIT_SHA
-   waitFor: ['Deploy to Cloud Run on Anthos','Deploy to Hosted Cloud Run']
+  waitFor: ['Deploy to Cloud Run on Anthos','Deploy to Hosted Cloud Run']
 
 
 # Push container to AWS EKS

@@ -32,9 +32,17 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   
+  #Deploy to GCP Hosted Cloud Build
 - id: 'Deploy to Hosted Cloud Run'
   name: 'gcr.io/cloud-builders/gcloud'
   args: ['run', 'deploy', 'ghosted-gcpdemo', '--platform', 'managed','--region', 'us-central1', '--image', 'gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID']
+  waitFor: ['Push to GCR Container Registry']
+  
+    
+  #Deploy to Anthos Hosted Cloud Build
+- id: 'Deploy to Hosted Cloud Run'
+  name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'ghosted-gcpdemo', '--platform', 'gke','--cluster', 'cloudrun-default-cluster', '--cluster-location', 'us-central1-a', '--image', 'gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID']
   waitFor: ['Push to GCR Container Registry']
 
 - id: 'Dora Metrics'

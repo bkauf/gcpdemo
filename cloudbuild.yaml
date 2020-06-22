@@ -77,7 +77,6 @@ steps:
 #  secretEnv: ['AWS_SECRET_KEY']
 
 
-
 #secrets:
 #- kmsKeyName: projects/bkauf-cloud-build/locations/global/keyRings/multi-cloud-demo-keyring/cryptoKeys/primary-key
 #  secretEnv:

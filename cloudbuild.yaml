@@ -37,7 +37,6 @@ steps:
   name: 'gcr.io/cloud-builders/gcloud'
   args: ['run', 'deploy', 'ghosted-gcpdemo', '--platform', 'managed','--region', 'us-central1', '--image', 'gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID']
   waitFor: ['Push to GCR Container Registry']
-  
     
   #Deploy to Anthos Hosted Cloud Build
 - id: 'Deploy to Cloud Run on Anthos'

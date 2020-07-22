@@ -18,6 +18,7 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID"]
   waitFor: ['Create Container']
+  
 
 # Push container to Google GKE
 - id: 'Deploy to GKE'

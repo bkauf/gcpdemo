@@ -9,7 +9,6 @@ steps:
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
     npm install
   
-  
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID', '.']

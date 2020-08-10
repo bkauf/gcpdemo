@@ -53,7 +53,6 @@ steps:
   waitFor: ['Deploy to Cloud Run on Anthos','Deploy to Hosted Cloud Run']
 
 
-
 # Push container to AWS EKS
 #- name: 'gcr.io/bkauf-cloud-build/panick-aws-tools'
 #  id: 'Deploy to EKS'

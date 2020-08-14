@@ -8,7 +8,7 @@ steps:
     echo 'New Commit":"$COMMIT_SHA"'
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
     npm install
-    echo $_MERGE_TIME
+    echo '$_MERGE_TIME'
   
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
@@ -48,7 +48,7 @@ steps:
 
 - id: 'Dora Metrics'
   name: 'gcr.io/bkauf-cloud-build/leadtime:2.0'
-  waitFor: ['Deploy to GKE']
+  #waitFor: ['Deploy to GKE']
   args:
   - 'bkauf/gcpdemo'
   - $COMMIT_SHA

@@ -7,8 +7,8 @@ steps:
   - |
     echo 'New Commit":"$COMMIT_SHA"'
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
-    npm install
-   # echo '$_MERGE_TIME'
+   # npm install
+    echo '$_MERGE_TIME'
   
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'

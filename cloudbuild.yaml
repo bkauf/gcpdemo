@@ -7,7 +7,6 @@ steps:
   - |
     echo 'New Commit":"$COMMIT_SHA"'
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
-    echo '$_MERGE_TIME'
   
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
@@ -52,6 +51,7 @@ steps:
   args:
   - 'bkauf/gcpdemo'
   - $COMMIT_SHA
+  - $_MERGE_TIME'
   waitFor: ['Deploy to Cloud Run on Anthos','Deploy to GKE', 'Deploy to Hosted Cloud Run']
 
 

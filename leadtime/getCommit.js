@@ -6,8 +6,6 @@ const repo        = args[1]; //Commit Repo
 const commit      = args[2]; //Commit SHA
 const commitTime  = args[3];//PR time
 const currentTime = (Date.now()/1000);//convert milliseconds to seconds
-console.log('commit time: '+commitTime);
-console.log('current time: '+currentTime);
 
 var leadtime  = diff_time(commitTime, currentTime);//working 
 console.log(leadtime);

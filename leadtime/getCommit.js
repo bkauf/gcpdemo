@@ -1,4 +1,4 @@
-
+const https = require('https');
 const args = process.argv.slice(1)
 
 // Calculate difference between current and gitcommit times

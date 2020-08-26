@@ -51,7 +51,7 @@ steps:
   args:
   - 'bkauf/gcpdemo'
   - $COMMIT_SHA
-  - $_MERGE_TIME'
+  - $_MERGE_TIME
   waitFor: ['Deploy to Cloud Run on Anthos','Deploy to GKE', 'Deploy to Hosted Cloud Run']
 
 

@@ -7,8 +7,10 @@ const commit      = args[2]; //Commit SHA
 const commitTime  = args[3];//PR time
 const currentTime = Date.now();
 
+
 var leadtime  = diff_hours(commitTime, currentTime);//working 
-isRollback(commit,leadtime);//get rollback data then print to log
+console.log(leadtime);
+isRollback(commit,repo,leadtime);//get rollback data then print to log
 
 function diff_hours(dt1, dt2) {
   var diff =(dt2 - dt1);
@@ -20,7 +22,7 @@ function diff_hours(dt1, dt2) {
   return minutesRaw.toFixed(2); //minutes with 2 decimals
  }
 
- function isRollback(commit, leadtime){// compare current commit against latest master branch 
+ function isRollback(commit,repo, leadtime){// compare current commit against latest master branch 
      var options = {
     host: 'api.github.com',
     port: 443,
@@ -43,9 +45,9 @@ function diff_hours(dt1, dt2) {
     var gitDataObj2 = JSON.parse(data);
    
     if (args[3] === gitDataObj2.sha){//commit matches master
-          console.log("Commit: " +commit+" || Rollback: False || LeadTime: "+diff_hours(dt1, dt2));
+          console.log("Commit: " +commit+" || Rollback: False || LeadTime: "+leadtime);
     }else{//commit doesn't match latest, must be rollback
-         console.log("Commit: " +commit+" || Rollback: True || LeadTime: "+diff_hours(dt1, dt2));
+         console.log("Commit: " +commit+" || Rollback: True || LeadTime: "+leadtime);
     }
     
   });

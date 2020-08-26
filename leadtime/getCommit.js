@@ -6,19 +6,21 @@ const repo        = args[1]; //Commit Repo
 const commit      = args[2]; //Commit SHA
 const commitTime  = args[3];//PR time
 const currentTime = Date.now();
+console.log('commit time: '+commitTime);
+console.log('current time: '+currentTime);
 
 
-var leadtime  = diff_hours(commitTime, currentTime);//working 
+var leadtime  = diff_time(commitTime, currentTime);//working 
 console.log(leadtime);
 isRollback(commit,repo,leadtime);//get rollback data then print to log
 
-function diff_hours(dt1, dt2) {
-  var diff =(dt2 - dt1);
-  var randomGen =Math.floor((Math.random() * 800) + 60);
-  var minutesRaw = (diff/60000)+randomGen;//temp random time for testing
+function diff_time(dt1, dt2) {
+    var diff =(dt2 - dt1);
+    var minutesRaw = (diff/60000);//leadtime in munits
+  //var randomGen =Math.floor((Math.random() * 800) + 60);
+    //var minutesRaw = (diff/60000)+randomGen;//temp random time for testing
   // var minutes = Math.floor(diff / 60000);
   // var seconds = ((diff % 60000) / 1000).toFixed(0);
-  //return minutes + ":" + seconds;
   return minutesRaw.toFixed(2); //minutes with 2 decimals
  }
 

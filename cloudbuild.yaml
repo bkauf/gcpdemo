@@ -7,7 +7,6 @@ steps:
   - |
     echo 'New Commit":"$COMMIT_SHA"'
     echo '{ "commitID":"$COMMIT_SHA", "buildID":"$BUILD_ID"}' > buildDetails
-    echo $_COMMITS
   
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'

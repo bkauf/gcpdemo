@@ -31,6 +31,18 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   
+
+
+- id: 'Dora Metrics'
+  name: 'gcr.io/bkauf-cloud-build/leadtime:2.0'
+  #waitFor: ['Deploy to GKE']
+  args:
+  - 'bkauf/gcpdemo'
+  - $COMMIT_SHA
+  - $_MERGE_TIME
+  waitFor: ['Deploy to GKE']
+  #waitFor: ['Deploy to Cloud Run on Anthos','Deploy to GKE', 'Deploy to Hosted Cloud Run']
+
   #Deploy to GCP Hosted Cloud Build
 #- id: 'Deploy to Hosted Cloud Run'
 #  name: 'gcr.io/cloud-builders/gcloud'
@@ -42,16 +54,6 @@ steps:
 #  name: 'gcr.io/cloud-builders/gcloud'
 #  args: ['run', 'deploy', 'gcpdemo', '--platform', 'gke','--cluster', 'cloudrun-default-cluster', '--cluster-location', 'us-central1-a', '--image', 'gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID']
 #  waitFor: ['Push to GCR Container Registry']
-
-- id: 'Dora Metrics'
-  name: 'gcr.io/bkauf-cloud-build/leadtime:2.0'
-  #waitFor: ['Deploy to GKE']
-  args:
-  - 'bkauf/gcpdemo'
-  - $COMMIT_SHA
-  - $_MERGE_TIME
-  waitFor: ['Deploy to GKE']
-  #waitFor: ['Deploy to Cloud Run on Anthos','Deploy to GKE', 'Deploy to Hosted Cloud Run']
 
 
 # Push container to AWS EKS

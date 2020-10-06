@@ -41,6 +41,7 @@ steps:
   waitFor: ['Deploy to GKE']
   #waitFor: ['Deploy to Cloud Run on Anthos','Deploy to GKE', 'Deploy to Hosted Cloud Run']
 
+
   #Deploy to GCP Hosted Cloud Build
 #- id: 'Deploy to Hosted Cloud Run'
 #  name: 'gcr.io/cloud-builders/gcloud'

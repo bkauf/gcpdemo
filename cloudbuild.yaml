@@ -10,7 +10,7 @@ steps:
   
 - id: 'Create Container'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID', '.']
+  args: ['build', '-t', 'gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID', '.']
   waitFor: ['Rebuild Node Files']
 
 - id: 'Push to GCR Container Registry'

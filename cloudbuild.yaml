@@ -19,27 +19,36 @@ steps:
   waitFor: ['Create Container']
   
 # Push container to Google GKE
-- id: 'Deploy to GKE'
-  name: 'gcr.io/cloud-builders/kubectl'
+- id: 'Update Manifest'
+  name: 'gcr.io/anthos-tech-summit/gitops:1.0'
   waitFor: ['Push to GCR Container Registry']
+  entrypoint: 'bash'
   args:
-  - 'set'
-  - 'image'
-  - 'deployment/frontend-production'
-  - 'webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+  - '-c' # pass what follows as a command to bash
+  - |
+    kustomize k8s/overlays/production
+ 
+  # To do
+  #1. set new image in kustomize
+  #2 push new yaml to tech-summit repo
+  #args:
+  #- 'set'
+  #- 'image'
+  #- 'deployment/frontend-production'
+  #- 'webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID'
+  #env:
+  #- 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+  #- 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   
   
-- id: 'Dora Metrics'
-  name: 'gcr.io/bkauf-cloud-build/leadtime:2.0'
+#- id: 'Dora Metrics'
+#  name: 'gcr.io/bkauf-cloud-build/leadtime:2.0'
   #waitFor: ['Deploy to GKE']
-  args:
-  - 'bkauf/gcpdemo'
-  - $COMMIT_SHA
-  - $_MERGE_TIME
-  waitFor: ['Deploy to GKE']
+#  args:
+#  - 'bkauf/gcpdemo'
+#  - $COMMIT_SHA
+#  - $_MERGE_TIME
+#  waitFor: ['Deploy to GKE']
   #waitFor: ['Deploy to Cloud Run on Anthos','Deploy to GKE', 'Deploy to Hosted Cloud Run']
 
 
@@ -68,8 +77,6 @@ steps:
 #  - -c
 #  - |
 #     echo "Configuring AWS credentials and configs..."
-#     export AWS_ACCESS_KEY_ID=AKIAY47XAHKDEGVY3BUP
-#     export AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_KEY
 #     export AWS_DEFAULT_REGION=us-west-2
 #     echo "Test file upload to S3"
 #     touch file-to-upload.txt
@@ -84,7 +91,7 @@ steps:
 #secrets:
 #- kmsKeyName: projects/bkauf-cloud-build/locations/global/keyRings/multi-cloud-demo-keyring/cryptoKeys/primary-key
 #  secretEnv:
-#    AWS_SECRET_KEY: 'CiQApb8sr/+aL/7E6PZXsrz9mkCiLs12HBV3mez9bypm1v765vgSUQCNUYOTKQidaT62K5DLI86warbBSWcQXVGQeiqexEAzHTEFhxs5WB5gntolN9tdogNgFgh1VvXsAJ2/l3qJXz7H1CvX13Z13CwH+pBDxZgOYA=='
+#    SECRET_KEY: 'C'
 #options:
 # machineType: 'N1_HIGHCPU_8'
 # diskSizeGb: 200

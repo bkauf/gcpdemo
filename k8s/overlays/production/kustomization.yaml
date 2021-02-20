@@ -9,5 +9,5 @@ images:
 - name: bkauf/gcpdemo
   newName: bkauf/gcpdemo
   newTag: eatat
-resources:
+bases:
 - ../../base

@@ -35,7 +35,7 @@ steps:
     git config --global user.email "$_GIT_EMAIL"
     git config --global user.name "$_GIT_USER"
     git commit -am "manifest change $BUILD_ID"
-    git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.gi
+    git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.git
 availableSecrets:
   secretManager:
   - versionName: projects/1046932852410/secrets/gh-password/versions/1

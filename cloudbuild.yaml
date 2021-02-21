@@ -27,9 +27,9 @@ steps:
   - '-c' # pass what follows as a command to bash
   - |
     cd k8s/overlays/production
-    ./../../kustomize edit set image bkauf/gcpdemo=gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID
+    kustomize edit set image bkauf/gcpdemo=gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID
     cd ../../
-    ./kustomize k8s/overlays/production
+    kustomize k8s/overlays/production
  
   # To do
   #1. set new image in kustomize

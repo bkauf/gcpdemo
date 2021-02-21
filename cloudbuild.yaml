@@ -18,7 +18,7 @@ steps:
   args: ["push", "gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID"]
   waitFor: ['Create Container']
   
-# Push container to Google GKE
+# Update Manifest in Anthos Config Management Directory 
 - id: 'Update Manifest'
   name: 'gcr.io/anthos-tech-summit/gitops:1.0'
   waitFor: ['Push to GCR Container Registry']
@@ -30,6 +30,16 @@ steps:
     kustomize edit set image bkauf/gcpdemo=gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID
     git clone https://github.com/bkauf/csp-config-management.git
     kustomize build > csp-config-management/tech-summit/namespaces/google/deployment.yaml
+    cd csp-config-management/
+    git config --global user.email "$_GIT_EMAIL"
+    git config --global user.name "$_GIT_USER"
+    git commit -am "manifest change $BUILD_ID"
+    git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.gi
+  availableSecrets:
+    secretManager:
+    - versionName: projects/1046932852410/secrets/gh-password
+      env: 'PASSWORD'
+ 
 
 
  

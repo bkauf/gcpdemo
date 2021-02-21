@@ -28,7 +28,10 @@ steps:
   - |
     cd k8s/overlays/production
     kustomize edit set image bkauf/gcpdemo=gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID
-    kustomize build overlays/production
+    git clone https://github.com/bkauf/csp-config-management.git
+    kustomize build > csp-config-management/tech-summit/namespaces/google/deployment.yaml
+
+
  
   # To do
   #1. set new image in kustomize

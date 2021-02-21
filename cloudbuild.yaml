@@ -38,7 +38,7 @@ steps:
     git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.gi
 availableSecrets:
   secretManager:
-  - versionName: projects/1046932852410/secrets/gh-password
+  - versionName: projects/1046932852410/secrets/gh-password/versions/1
     env: 'PASSWORD'
  
 

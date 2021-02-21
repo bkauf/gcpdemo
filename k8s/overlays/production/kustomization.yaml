@@ -8,7 +8,7 @@ patchesStrategicMerge:
 images:
 - name: bkauf/gcpdemo
   newName: bkauf/gcpdemo
-  newTag: eatat
+  newTag: "333"
   
-bases:
+resources:
 - ../../base

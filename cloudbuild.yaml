@@ -23,6 +23,7 @@ steps:
   name: 'gcr.io/anthos-tech-summit/gitops:1.0'
   waitFor: ['Push to GCR Container Registry']
   entrypoint: 'bash'
+  secretEnv: ['PASSWORD']
   args:
   - '-c' # pass what follows as a command to bash
   - |
@@ -35,10 +36,10 @@ steps:
     git config --global user.name "$_GIT_USER"
     git commit -am "manifest change $BUILD_ID"
     git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.gi
-  availableSecrets:
-    secretManager:
-    - versionName: projects/1046932852410/secrets/gh-password
-      env: 'PASSWORD'
+availableSecrets:
+  secretManager:
+  - versionName: projects/1046932852410/secrets/gh-password
+    env: 'PASSWORD'
  
 
 

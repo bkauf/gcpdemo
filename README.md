@@ -7,6 +7,7 @@ This app can be run as a container or google app engine project. Current capabil
 * Dialogflow and Chatbase bot tester
 * Pubsub message submissions
 * Google Cloud Spanner Database creation, data insert, and query
+* Git Commit latest manifest via gitops cloud builder(cloudbuild.yaml)
 
 ## To Use:
 ### Docker

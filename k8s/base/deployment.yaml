@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: frontend-production
   annotations:
-    configmanagement.gke.io/cluster-selector: cluster-east
+   # configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   replicas: 1
   strategy:

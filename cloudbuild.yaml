@@ -42,7 +42,7 @@ steps:
 
 - id: 'Push to GKE'
   name: 'gcr.io/cloud-builders/kubectl' 
-  waitFor: ['Push to GCR Container Registry']
+  waitFor: ['Update Manifest']
   args:
   - 'apply'
   - '-f'

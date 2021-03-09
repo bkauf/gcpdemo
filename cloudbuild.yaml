@@ -42,19 +42,16 @@ availableSecrets:
     env: 'PASSWORD'
  
 
-
- 
-  # To do
-  #1. set new image in kustomize
-  #2 push new yaml to tech-summit repo
-  #args:
-  #- 'set'
-  #- 'image'
-  #- 'deployment/frontend-production'
-  #- 'webserver=gcr.io/$_IMAGE_REPO/gcpdemo:$BUILD_ID'
-  #env:
-  #- 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
-  #- 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+- id: 'Push to GKE'
+  name: 'gcr.io/cloud-builders/kubectl' 
+  waitFor: ['Push to GCR Container Registry']
+  args:
+  - 'apply'
+  - '-f'
+  - 'csp-config-management/tech-summit/namespaces/google/deployment.yaml'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   
   
 #- id: 'Dora Metrics'

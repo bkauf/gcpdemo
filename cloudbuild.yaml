@@ -40,8 +40,7 @@ steps:
     git commit -am "manifest change $BUILD_ID"
     git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.git
 
-
-  - id: 'Push to GKE'
+- id: 'Push to GKE'
   name: 'gcr.io/cloud-builders/kubectl' 
   waitFor: ['Push to GCR Container Registry']
   args:

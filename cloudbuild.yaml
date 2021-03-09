@@ -17,6 +17,18 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID"]
   waitFor: ['Create Container']
+
+
+- id: 'Push to GKE'
+  name: 'gcr.io/cloud-builders/kubectl' 
+  waitFor: ['Push to GCR Container Registry']
+  args:
+  - 'apply'
+  - '-f'
+  - 'csp-config-management/tech-summit/namespaces/google/deployment.yaml'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
   
 # Update Manifest in Anthos Config Management Directory 
 - id: 'Update Manifest'
@@ -40,18 +52,9 @@ availableSecrets:
   secretManager:
   - versionName: projects/1046932852410/secrets/gh-password/versions/1
     env: 'PASSWORD'
- 
 
-- id: 'Push to GKE'
-  name: 'gcr.io/cloud-builders/kubectl' 
-  waitFor: ['Push to GCR Container Registry']
-  args:
-  - 'apply'
-  - '-f'
-  - 'csp-config-management/tech-summit/namespaces/google/deployment.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+
+
   
   
 #- id: 'Dora Metrics'

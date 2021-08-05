@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   fs.readFile('buildDetails', 'utf8', function(err, contents) {
     var buildDts = JSON.parse(contents);
 
-    res.render('index', { title: '::Cloud Tester::', container: hostname, buildID: buildDts.buildID, commitID: buildDts.commitID });
+    res.render('index', { title: '::Cloud Tester::', cloud: process.env.CLOUD,  container: hostname, buildID: buildDts.buildID, commitID: buildDts.commitID });
   });
 
 

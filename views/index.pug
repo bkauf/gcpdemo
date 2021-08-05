@@ -34,8 +34,15 @@ html
           br
         #body
           div
-          img(src="/images/nyc-image.jpg")
+          if cloud === 'azure'
+            img(src="/images/azure.jpg")
+
+          else if cloud === 'aws'
+            img(src="/images/aws.png")
+          else
+            img(src="/images/nyc-image.jpg")
+          
           div
             a(href="https://github.com/bkauf/gcpdemo") Source on Github
-            p Commit: #{commitID}
+            p Commit: #{commitID} 
             p Build: #{buildID}

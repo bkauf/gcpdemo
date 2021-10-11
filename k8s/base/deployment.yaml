@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: frontend-production
   annotations:
-   # configmanagement.gke.io/cluster-selector: cluster-east
+    configmanagement.gke.io/cluster-selector: gcp-cluster
 spec:
   replicas: 1
   strategy:
@@ -23,6 +23,9 @@ spec:
       containers:
       - name: webserver
         image: bkauf/gcpdemo
+        env:
+        - name: CLOUD
+          value: "gcp"
         imagePullPolicy: Always
         ports:
         - name: frontend

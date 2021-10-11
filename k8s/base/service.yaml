@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-cluster
   labels:
     app: frontend-production
   name: frontend-production

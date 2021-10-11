@@ -41,17 +41,16 @@ steps:
     echo "Test:" $$PASSSWORD
     git push https://$_GIT_USER:$$PASSWORD@github.com/$_GIT_USER/csp-config-management.git
 
-- id: 'Push to GKE'
-  name: 'gcr.io/cloud-builders/kubectl' 
-  waitFor: ['Update Manifest']
-  args:
-  - 'apply'
-  - '-f'
-  - 'k8s/overlays/production/csp-config-management/tech-summit/namespaces/google/deployment.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
-
+#- id: 'Push to GKE'
+#  name: 'gcr.io/cloud-builders/kubectl' 
+#  waitFor: ['Update Manifest']
+#  args:
+#  - 'apply'
+#  - '-f'
+#  - 'k8s/overlays/production/csp-config-management/tech-summit/namespaces/google/deployment.yaml'
+#  env:
+#  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+#  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
 
 availableSecrets:

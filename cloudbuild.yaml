@@ -33,7 +33,7 @@ steps:
     cd k8s/overlays/production
     kustomize edit set image bkauf/gcpdemo=gcr.io/$PROJECT_ID/gcpdemo:$BUILD_ID
     git clone https://github.com/bkauf/csp-config-management.git
-    kustomize build > csp-config-management/tech-summit/namespaces/google/deployment.yaml
+    kustomize build > csp-config-management/tech-summit/namespaces/app-1/deployment.yaml
     cd csp-config-management/
     git config --global user.email "$_GIT_EMAIL"
     git config --global user.name "$_GIT_USER"

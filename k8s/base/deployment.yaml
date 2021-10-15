@@ -2,7 +2,6 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: frontend-production
-  namespace: app-1
   annotations:
     configmanagement.gke.io/cluster-selector: gcp-cluster
 spec:

@@ -55,7 +55,7 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/389188078063/secrets/gh-password/1
+  - versionName: projects/389188078063/secrets/gh-password
     env: 'PASSWORD'
 
 

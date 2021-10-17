@@ -23,7 +23,7 @@ steps:
   
 # Update Manifest in Anthos Config Management Directory 
 - id: 'Update Manifest'
-  name: 'gcr.io/anthos-tech-summit/gitops:1.0'
+  name: 'gcr.io/bkauf-monitoring/gitops:1.0'
   waitFor: ['Push to GCR Container Registry']
   entrypoint: 'bash'
   secretEnv: ['PASSWORD']
